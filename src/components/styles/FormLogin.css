@@ -1,0 +1,121 @@
+.form-container-2 {
+    height: 45vh;
+    width: 55vw;
+    margin: 100px auto;
+    position: relative;
+    border-radius: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-2 h1 {
+    font-size: 2rem;
+    text-align: start;
+    width: 80%;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+.form-inputs-2 {
+    margin-bottom: 0.5rem;
+    width: 80%;
+}
+
+.form-inputs-2 p {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+    color: #f00e0e;
+}
+
+.form-label-2 {
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+    color: black;
+}
+
+.form-input-2 {
+    display: block;
+    padding-left: 10px;
+    outline: none;
+    border-radius: 2px;
+    height: 40px;
+    width: 100%;
+    border: 3px solid black;
+}
+
+.form-input-2::placeholder {
+    color: #595959;
+    font-size: 12px;
+}
+
+.form-input-btn-2 {
+    width: 80%;
+    height: 50px;
+    margin-top: 5vh;
+    border-radius: 2px;
+    background: black;
+    outline: none;
+    border: 1px solid silver;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.form-input-btn-2:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all 0.1s ease-in-out;
+}
+
+@media screen and (max-width: 960px) {
+    .form-container-2 {
+        width: 60%;
+        height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .form-2 h1 {
+        font-size: 0.7rem;
+    }
+    .form-input-2 {
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
+        width: 100%;
+        height: 50%;
+    }
+    .form-input-2 p {
+        font-size: 0.5rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .form-input-2::placeholder {
+        font-size: 10px;
+        padding-left: 5px;
+    }
+    .form-label-2 {
+        font-size: 0.65rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .form-input-btn-2 {
+        height: 15%;
+        width: 40%;
+    }
+}
