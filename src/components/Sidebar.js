@@ -91,10 +91,10 @@ function Sidebar() {
                                 </Dropdown.Menu>
                             </Dropdown>
                 </div>
-                <div className={sidebar ? 'sidemenu-container active' : 'sidemenu-container'}>
+                <div className={sidebar ? 'sidemenu-container-active' : 'sidemenu-container'}>
                     <ul className='sidemenu-items'>
                         <li className='sidemenu-toggle' onClick={toggle}>
-                            <Link to='#' className='hamburger'>
+                            <Link to='#' className='close'>
                                 <AiIcons.AiOutlineCloseSquare />
                             </Link>
                         </li>
