@@ -25,30 +25,30 @@ const languages = [
 
 const SideBarData = [
     {
-        title : 'banking_profile',
+        title: 'banking_profile',
         id: 'bank-profile',
-        icon: <AiIcons.AiFillBank className='icon'/>,
+        icon: <AiIcons.AiFillBank className='icon' />,
         cName: 'sidemenu-text',
         link: '/account'
     },
     {
-        title : 'settings',
+        title: 'settings',
         id: 'settings',
-        icon: <IoIcons.IoMdSettings className='icon'/>,
+        icon: <IoIcons.IoMdSettings className='icon' />,
         cName: 'sidemenu-text',
         link: '/settings'
     },
     {
-        title : 'accounts',
+        title: 'accounts',
         id: 'accounts',
-        icon: <AiIcons.AiFillCreditCard className='icon'/>,
+        icon: <AiIcons.AiFillCreditCard className='icon' />,
         cName: 'sidemenu-text',
         link: '/accounts',
     },
     {
-        title : 'faq',
+        title: 'faq',
         id: 'faq',
-        icon: <AiIcons.AiFillInfoCircle className='icon'/>,
+        icon: <AiIcons.AiFillInfoCircle className='icon' />,
         cName: 'sidemenu-text',
         link: '/faq'
     }
@@ -68,48 +68,46 @@ function Sidebar() {
 
     return (
         <>
-                <div className="sidemenu">
-                    <Link to="#" className='hamburger'>
-                        <FaIcons.FaBars onClick={toggle} />
-                    </Link>
-                    <Dropdown className="dropdown-side">
-                                <Dropdown.Toggle className="dropdown-side-toggle" variant="success" id="dropdown-side-basic">
-                                    <GlobeIcon className="globe" /><FaIcons.FaChevronDown />
-                                </Dropdown.Toggle>
-                                <Dropdown.Menu className="dropdown-side-menu">
-                                    <li><span className="dropdown-side-item-text">{t('language')}</span></li>
-                                    {languages.map(({ code, name, country_code }) => (
-                                        <li key={country_code} className="dropdown-side-list-item">
-                                            <Dropdown.Item className="dropdown-side-item"
-                                                onClick={() => i18next.changeLanguage(code)}
-                                                disabled={code === currentLanguageCode}>
-                                                <span className={`flag-icon flag-icon-${country_code} mx-2`} style={{ opacity: code === currentLanguageCode ? 0.3 : 1 }}></span> {/* Deactivate button when the current language is active */}
-                                                {name}
-                                            </Dropdown.Item>
-                                        </li>
-                                    ))}
-                                </Dropdown.Menu>
-                            </Dropdown>
-                </div>
-                <div className={sidebar ? 'sidemenu-container-active' : 'sidemenu-container'}>
-                    <ul className='sidemenu-items'>
-                        <li className='sidemenu-toggle' onClick={toggle}>
-                            <Link to='#' className='close'>
-                                <AiIcons.AiOutlineCloseSquare />
-                            </Link>
-                        </li>
-                        {SideBarData.map((item, index) => {
-                            return (
-                                <li key={index} className={item.cName}>
-                                    <Link to={item.link} >
-                                        {item.icon}
-                                        <span>{t(item.title)}</span>
-                                    </Link>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </div>
+            <div className="sidemenu">
+                <Link to="#" className='hamburger'>
+                    <FaIcons.FaBars onClick={toggle} />
+                </Link>
+                <Dropdown className="dropdown-side">
+                    <Dropdown.Toggle className="dropdown-side-toggle" variant="success" id="dropdown-side-basic">
+                        <GlobeIcon className="globe" /><FaIcons.FaChevronDown />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className="dropdown-side-menu">
+                        <li><span className="dropdown-side-item-text">{t('language')}</span></li>
+                        {languages.map(({ code, name, country_code }) => (
+                            <li key={country_code} className="dropdown-side-list-item">
+                                <Dropdown.Item className="dropdown-side-item"
+                                    onClick={() => i18next.changeLanguage(code)}
+                                    disabled={code === currentLanguageCode}>
+                                    <span className={`flag-icon flag-icon-${country_code} mx-2`} style={{ opacity: code === currentLanguageCode ? 0.3 : 1 }}></span> {/* Deactivate button when the current language is active */}
+                                    {name}
+                                </Dropdown.Item>
+                            </li>
+                        ))}
+                    </Dropdown.Menu>
+                </Dropdown>
+            </div>
+            <div className={sidebar ? 'sidemenu-container-active' : 'sidemenu-container'}>
+                <ul className='sidemenu-items'>
+                    <li className='sidemenu-toggle' onClick={toggle}>
+                        <Link to='#' className='close'>
+                            <AiIcons.AiOutlineCloseSquare />
+                        </Link>
+                    </li>
+                    {SideBarData.map((item, index) => {
+                        return (
+                            <li key={index} className={item.cName}>
+                                {item.icon}
+                                <span>{t(item.title)}</span>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
         </>
     )
 }
