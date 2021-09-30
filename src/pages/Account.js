@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/Account.css'
 import Cards2 from '../components/Cards2'
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../components/SideMenu'
 import { useTranslation } from 'react-i18next';
 /* Account Page, displays basic account information and links to all other account pages*/
 

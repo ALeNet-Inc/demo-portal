@@ -2,7 +2,7 @@ import React from 'react'
 import './styles/MyTransactions.css'
 import { useTranslation } from 'react-i18next';
 import DataProcessingUtil from '../functions/DataProcessingUtil';
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../components/SideMenu'
 
 /* A page with all trust banking information for a user */
 

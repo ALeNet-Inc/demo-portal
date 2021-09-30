@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import ClientixAPI from '../functions/ClientixAPI';
 import Dropdown from '../components/Dropdown'
 import TextArea from '../components/TextArea'
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../components/SideMenu'
 import Popup from '../components/Popup'
 
 function ServiceRequests() {
