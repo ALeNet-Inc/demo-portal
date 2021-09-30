@@ -1,0 +1,102 @@
+.service-requests {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.service-form-container {
+    width: 75vw;
+    height: 90vh;
+    background: rgb(0, 0, 0);
+    margin: 10vh 0 0 20vw;
+    position: relative;
+    justify-content: center;
+}
+
+.form-title {
+    color:rgb(255, 255, 255);
+    font-size: 3rem;
+    padding-top: 10px;
+    font-weight: 200;
+}
+
+.dropdown-prompt {
+    color:rgb(255, 255, 255);
+    margin: 3vh 5vw 2vh;
+    font-size: 1.5rem;
+    padding-top: 10px;
+    font-weight: 200;
+}
+
+.select {
+    margin-left: 5vw !important;
+    border-radius: 1px;
+    font-size: 1.5rem;
+    font-weight: 200;
+    color: black;
+    background: white;
+}
+
+.contact-prompt {
+    color: white;
+    margin: 3vh 1vw 0 5vw ;
+    font-weight: 300;
+}
+
+.contact-prompt a {
+    color: rgb(255, 208, 0);
+    font-weight: 600;
+}
+
+.text-prompt {
+    color:rgb(255, 255, 255);
+    margin: 3vh 5vw 2vh;
+    font-size: 1.5rem;
+    padding-top: 10px;
+    font-weight: 200;
+}
+
+.text-area {
+    margin-left: 5vw;
+    width: 80%;
+}
+
+
+.service-btn-submit {
+    margin: 10vh 0vw 0vh 5vw;
+    padding: 10px 20px;
+    background:rgb(255, 255, 255);
+    color: black;
+    border: none;
+    font-size: medium;
+}
+
+.service-btn-submit:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    color: rgb(0, 0, 0);
+    background: rgb(255, 196, 0);
+    transition: 0.15s ease-in-out;
+}
+
+.service-btn {
+    margin: 2vh 2vw 0 2vw;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background: rgb(44, 121, 131);
+}
+
+.service-btn:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    color: rgb(44, 121, 131);
+    background: white;
+    transition: 0.15s ease-in-out;
+}
+
+.left-arr {
+    margin-top: 2px;
+    margin-right: 10px;
+}

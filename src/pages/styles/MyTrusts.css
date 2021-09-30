@@ -1,0 +1,48 @@
+.background {
+    background: black;
+}
+
+.mytrusts{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.my-trusts-container {
+    width: 80vw;
+    height: 90vh;
+    background: rgb(0, 0, 0);
+    margin: 10vh 0 0 21vw;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+.my-trusts-title {
+    color:rgb(255, 255, 255);
+    font-size: 5rem;
+    padding-top: 10px;
+    font-weight: 200;
+}
+
+.my-trusts-table {
+    margin: 10px;
+    width: 95%;
+}
+
+.my-trusts-table th {
+    border-bottom: thick solid rgb(255, 174, 0);
+    color:rgb(255, 255, 255);
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+
+.my-trusts-table td {
+    border-right: thin solid rgb(255, 255, 255);
+    border-bottom:thin solid rgb(255, 255, 255);
+    font-weight: 300;
+    color: white;
+    padding: 4px;
+}

@@ -1,0 +1,24 @@
+.load-container {
+    position: absolute;
+    width: 100vw;
+    height: 120vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999 !important;
+    background: #fff;
+}
+
+.loader {
+    z-index: 1000 !important;
+    position: absolute;
+}
+
+.heading {
+    z-index: 1000 !important;
+    margin-top: 60vh;
+    margin-left: 1vw;
+    font-size: 3rem;
+    color: black;
+    position: absolute
+}

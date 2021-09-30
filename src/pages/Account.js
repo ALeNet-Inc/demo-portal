@@ -1,0 +1,26 @@
+import React from 'react';
+import './styles/Account.css'
+import Cards2 from '../components/Cards2'
+import Sidebar from '../components/Sidebar'
+import { useTranslation } from 'react-i18next';
+/* Account Page, displays basic account information and links to all other account pages*/
+
+function Account() {
+
+    const acc_hold = sessionStorage.getItem("FIRSTNAME") + " " + sessionStorage.getItem("LASTNAME")
+    const { t } = useTranslation();
+
+    return (
+        <>
+        <Sidebar />
+            <div className='account'>
+                { /* eslint-disable-next-line */}
+                <h1 id="account-holder" className='acc_name'>{t('welcome') + ' ' + acc_hold}</h1>
+                <h3 className='prompt'>{t('what-help-with')}</h3>
+                <Cards2 className='card-acc-menu' />
+            </div>
+        </>
+    )
+}
+
+export default Account
