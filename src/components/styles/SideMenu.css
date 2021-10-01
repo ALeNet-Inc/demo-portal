@@ -99,10 +99,9 @@
 
 .hamburger:hover {
     transform: scale(1.13) ; 
-    color: gold;
 }
 
-span {
+.side-link span {
     margin-left: 16px ;
 }
 
