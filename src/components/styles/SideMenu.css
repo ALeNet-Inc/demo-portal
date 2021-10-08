@@ -28,12 +28,12 @@
     justify-content: center ;
     position: fixed ;
     top: 0 ;
-    left:-100% ;
-    transition: 850ms ;
+    left: -20% ;
+    transition: 450ms ;
     border-radius: 0 3px 3px 0 ;
 }
 
-.sidemenu-container-active {
+.sidemenu-container.active {
     background-color: white ;
     opacity: 95% ;
     width: 20vw ;
@@ -44,7 +44,7 @@
     top: 0 ;
     border-radius: 0 3px 3px 0 ;
     left: 0 !important;
-    transition: 350ms ;
+    transition: 450ms ;
     z-index: 5000;
 }
 
@@ -102,7 +102,13 @@
 }
 
 .side-link span {
+    color: black;
     margin-left: 16px ;
+}
+
+.side-link:hover span {
+  color: white;
+  transition: 200ms;
 }
 
 .dropdown-side {
@@ -166,10 +172,3 @@
     background-color:rgb(0, 0, 0);
     color: #fff;
   }
-
-
-@media screen and (max-width:1000px) {
-    .nav-menu.active {
-        width: 100vw;
-    }
-}

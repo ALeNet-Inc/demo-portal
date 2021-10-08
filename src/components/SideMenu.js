@@ -1,7 +1,7 @@
 import { React, useState } from 'react'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io"
+import * as IoIcons from "react-icons/io";
 import { Link } from 'react-router-dom';
 import i18next from 'i18next'
 import { useTranslation } from 'react-i18next';
@@ -60,7 +60,7 @@ function SideMenu() {
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
-            <div className={sidebar ? 'sidemenu-container-active' : 'sidemenu-container'}>
+            <div className={sidebar ? 'sidemenu-container active' : 'sidemenu-container'}>
                 <ul className='sidemenu-items'>
                     <li className='sidemenu-toggle' onClick={toggle}>
                         <Link to='#' className='close'>
