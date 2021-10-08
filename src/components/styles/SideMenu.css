@@ -21,7 +21,7 @@
 
 .sidemenu-container {
     background-color: white ;
-    opacity: 95% ;
+    opacity: 95% !important;
     width: 20vw ;
     height: 100vh ;
     display: flex ;
@@ -35,7 +35,7 @@
 
 .sidemenu-container.active {
     background-color: white ;
-    opacity: 95% ;
+    opacity: 95% !important;
     width: 20vw ;
     height: 100vh ;
     display: flex ;
