@@ -12,6 +12,7 @@ import Account from './pages/Account'
 import MyTrusts from './pages/MyTrusts';
 import MyTransactions from './pages/MyTransactions';
 import ServiceRequests from './pages/ServiceRequests';
+import MyAccounts from './pages/MyAccounts';
 
 /* Main App component where everything is routed */
 
@@ -31,6 +32,7 @@ function App() {
           <Route path='/my-trusts' component={MyTrusts} />
           <Route path='/my-transactions' component={MyTransactions} />
           <Route path='/service-request' component={ServiceRequests} />
+          <Route path='/my-accounts' component={MyAccounts} />
         </Switch>
       </Router>
     </>

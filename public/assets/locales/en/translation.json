@@ -112,5 +112,12 @@
     "transaction-status" : "Status",
     "transaction-amt" : "Ammount",
     "transaction-comments": "Comments",
-    "transaction-contract": "Contract"
+    "transaction-contract": "Contract",
+    "company": "Company",
+    "account_type": "Account Type",
+    "account_no": "Account Number",
+    "balance": "Balance",
+    "int_earned": "Interest Earned",
+    "int_paid": "Interest Paid",
+    "my-accounts": "My Accounts"
 }

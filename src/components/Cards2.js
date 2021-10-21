@@ -31,7 +31,7 @@ function Cards2() {
                     <ul className="cards__items">
                         <CardItem 
                             src='images/credit.jpg'
-                            text={t('my_accs')}
+                            text={t('my-accounts')}
                             label={t('acc_prompt')}
                             path='/my-accounts'
                         />

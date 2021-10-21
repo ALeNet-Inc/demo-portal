@@ -78,13 +78,13 @@ function SideMenu() {
                         </Link>
                     </li>
                     <li className='sidemenu-text'>
-                        <Link to='/my-products' className='side-link'>
+                        <Link to='/my-accounts' className='side-link'>
                             <AiIcons.AiFillCreditCard className='icon' /><span>{t('accounts')}</span>
                         </Link>
                     </li>
                     <li className='sidemenu-text'>
-                        <Link to='/account' className='side-link'>
-                            <AiIcons.AiFillBank className='icon' /><span>{t('banking_profile')}</span>
+                        <Link to='/faq' className='side-link'>
+                            <AiIcons.AiOutlineInfoCircle className='icon' /><span>{t('faq')}</span>
                         </Link>
                     </li>
                 </ul>

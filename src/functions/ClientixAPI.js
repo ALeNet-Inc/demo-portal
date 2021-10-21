@@ -101,6 +101,19 @@ export default class ClientixAPI {
             .catch(error => console.log('error', error))
     }
 
+    async getUserAccounts() {
+        this.sessionToken = Cookies.get("session_token");
+        this.requestOptions.method = this.method.get;
+        await fetch("https://eportal.clientix.com/clx56dev/apirest.php?classname=MY_PRODUCT&CLX_SESSION_ID=" + this.sessionToken, this.requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                let myAccountsJson = JSON.stringify(result)
+                if(myAccountsJson != null) {
+                    sessionStorage.setItem('myAccounts', myAccountsJson);
+                } 
+            })
+    }
+
 
 
     /**
@@ -157,6 +170,7 @@ export default class ClientixAPI {
         await this.login(username, password, showLoader)
         await this.getAccountInfo()
         await this.getUserTrusts()
+        await this.getUserAccounts()
         return await this.getUserTransactions(hideLoader)
     }
 }

@@ -111,5 +111,12 @@
     "transaction-status" : "Estado",
     "transaction-amt" : "Monto",
     "transaction-comments": "Comentarios",
-    "transaction-contract": "Contrato"
+    "transaction-contract": "Contrato",
+    "company": "Compañía",
+    "account_type": "Tipo de Cuenta",
+    "account_no": "Numero de Cuenta",
+    "balance": "Saldo",
+    "int_earned": "Interés ahorrado",
+    "int_paid": "Interés pagado",
+    "my-accounts": "Mis Cuentas"
 }
