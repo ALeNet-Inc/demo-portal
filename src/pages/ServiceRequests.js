@@ -49,7 +49,7 @@ function ServiceRequests() {
                     <p className='dropdown-prompt'>{t('what-help-with')}</p>
                     <div className='top-section'>
                         <Dropdown id='service-dropdown' placeholder={t('what-help-with')} options={serviceRequestOptions} onChange={dropdownHandler} />
-                        <label className='upload-prompt'>Choose a File to upload: </label>
+                        <label className='upload-prompt'>You may upload documents to display your problem more clearly. Choose a File to upload: </label>
                         <input type='file' className='fileUpload' />
                     </div>
                     <h2 className='text-prompt'>{t('problem-description')}</h2>

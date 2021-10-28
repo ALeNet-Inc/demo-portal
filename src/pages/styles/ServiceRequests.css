@@ -102,11 +102,16 @@
 }
 
 .top-section {
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: space-evenly;
     color: white;
+    white-space: pre-wrap;
+}
+
+.upload-prompt {
+    margin-left: 20px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 300;
+    font-weight: 200;
 }
