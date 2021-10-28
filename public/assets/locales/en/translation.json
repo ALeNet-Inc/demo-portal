@@ -119,5 +119,9 @@
     "balance": "Balance",
     "int_earned": "Interest Earned",
     "int_paid": "Interest Paid",
-    "my-accounts": "My Accounts"
+    "my-accounts": "My Accounts",
+    "error_prompt": "Opps! There was an error.",
+    "error_prompt_2": "Your request could not be processed at this time.",
+    "try_again": "Please try again at another time",
+    "back": "Go Back"
 }
