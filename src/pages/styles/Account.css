@@ -35,3 +35,16 @@
 .card-acc-menu {
     animation: slideRight 2s ease-in !important;
 }
+
+@media screen and (max-width: 700px) {
+    .acc_name {
+        padding-top: 8vh;
+        font-size: 2.5rem !important;
+        font-weight: 200;
+    }
+
+    .prompt {
+        font-size: 1rem;
+    }
+    
+}

@@ -118,5 +118,6 @@
     "balance": "Saldo",
     "int_earned": "Interés ahorrado",
     "int_paid": "Interés pagado",
-    "my-accounts": "Mis Cuentas"
+    "my-accounts": "Mis Cuentas",
+    "logout": "Salir"
 }

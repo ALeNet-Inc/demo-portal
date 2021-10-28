@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import * as Io5Icons from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import i18next from 'i18next'
 import { useTranslation } from 'react-i18next';
@@ -85,6 +86,11 @@ function SideMenu() {
                     <li className='sidemenu-text'>
                         <Link to='/faq' className='side-link'>
                             <AiIcons.AiOutlineInfoCircle className='icon' /><span>{t('faq')}</span>
+                        </Link>
+                    </li>
+                    <li className='sidemenu-text'>
+                        <Link to='/' className='side-link'>
+                            <Io5Icons.IoLogOut className='icon' /><span>{t('logout')}</span>
                         </Link>
                     </li>
                 </ul>
