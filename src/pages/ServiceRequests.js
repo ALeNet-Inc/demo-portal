@@ -47,7 +47,11 @@ function ServiceRequests() {
                 <div className='service-form-container'>
                     <h1 className='form-title'>{t("customer-support")}</h1>
                     <p className='dropdown-prompt'>{t('what-help-with')}</p>
-                    <Dropdown id='service-dropdown' placeholder={t('what-help-with')} options={serviceRequestOptions} onChange={dropdownHandler} />
+                    <div className='top-section'>
+                        <Dropdown id='service-dropdown' placeholder={t('what-help-with')} options={serviceRequestOptions} onChange={dropdownHandler} />
+                        <label className='upload-prompt'>Choose a File to upload: </label>
+                        <input type='file' className='fileUpload' />
+                    </div>
                     <h2 className='text-prompt'>{t('problem-description')}</h2>
                     <TextArea onChange={textHandler} />
                     <h3 className='contact-prompt'>{t('contact_prompt')}
