@@ -170,3 +170,27 @@
     background-color:rgb(0, 0, 0);
     color: #fff;
   }
+
+  @media screen and (max-width: 700px) {
+    .sidemenu-toggle {
+      background-color: transparent;
+    }
+
+    .sidemenu-container {
+      left: -100%;
+    }
+
+    .sidemenu-container.active {
+      left: 0;
+      width: 100vw;
+      background-color: rgba(255, 255, 255, 0.89);
+      position: absolute;
+      overflow-x: hidden;
+    }
+
+    .side-link {
+      font-size: 1.5rem !important;
+      padding-top: 2vh !important;
+      padding-bottom: 2vh !important;
+    }
+  }
