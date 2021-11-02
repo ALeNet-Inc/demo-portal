@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content="width=device-width, initial-scale=1.0">
+    <title>Clientix Demo App</title>
+    <style type='text/css'>
+      .offline-error-page {
+        height: 100vh;
+        margin: 0;
+        overflow-x: hidden;
+        background-color: black;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .offline-prompt-wrapper {
+        align-items: center;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 40px 0%;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.945);
+      }
+
+      .offline-prompt {
+        font-size: 2em;
+        color: white;
+      }
+
+      .offline-button {
+        border: 3px solid white;
+        background-color: transparent;
+        color: white;
+        padding: 1em 1.5em;
+      }
+
+      .offline-button:hover {
+        transform: scale(1.1);
+        background-color: white;
+        color: black;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="offline-error-page">
+      <div class="offline-prompt-wrapper">
+        <span class="offline-prompt">You seem to be offline. Check your internet connection and try again.</span>
+        <button onclick="location.reload();" class="offline-prompt-button"></button>
+      </div>
+    </div>
+  </body>
+
+</html>

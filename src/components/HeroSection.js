@@ -16,10 +16,10 @@ function HeroSection() {
             <h1> {t('achieve_freedom_msg')} </h1>
             <p> {t('waiting_for_msg')} </p>
             <div className='hero-btns'>
-                <Button className='btns' buttonStyle='btn--outline' buttonSize='btn--large' to='/signup'>
+                <Button className='btns' buttonStyle='btn--outline' buttonSize='btn--large' link='/signup'>
                 {t('create_account_msg')}
                 </Button>
-                <Button className='btns' buttonStyle='btn--primary' buttonSize='btn--large' to='/login'>
+                <Button className='btns' buttonStyle='btn--primary' buttonSize='btn--large' link='/login'>
                 {t('get_started_msg')} <FaIcons.FaPlayCircle className='fa-play-circle'/>
                 </Button>
             </div>

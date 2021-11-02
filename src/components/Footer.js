@@ -22,7 +22,7 @@ function Footer() {
                 <div className='input-areas'>
                     <form>
                         <input type='email' name='email' placeholder={t('email_placeholder')} className='footer-input'/>
-                        <Button buttonSize='btn-medium' buttonStyle='btn--primary'>{t('subscribe')}</Button>
+                        <Button buttonSize='btn-medium' link='/products' buttonStyle='btn--primary'>{t('subscribe')}</Button>
                     </form>
                 </div>
             </section>
@@ -66,7 +66,7 @@ function Footer() {
             <section className='social-media'>
                 <div className='social-media-wrap'>
                     <div className='footer-logo'>
-                        <Link className='social-logo'>
+                        <Link className='social-logo' to='www.alenet.com'>
                             <img src='/images/clientixlogo.jpg' alt='Clientix Logo' className='social-logo-img'></img>
                         </Link>
                     </div>
