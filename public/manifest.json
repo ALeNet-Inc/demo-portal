@@ -1,8 +1,15 @@
 {
   "short_name": "Clientix App",
-  "name": "Demo Portal",
-  "start_url": "/",
+  "name": "Clientix Demo Portal",
+  "icons": [
+    {
+      "src": "/images/clientixlogo.jpg",
+      "type": "image/jpg",
+      "sizes": "96x42"
+    }
+  ],
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#000000"
 }
