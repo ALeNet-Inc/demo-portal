@@ -174,7 +174,6 @@
   @media screen and (max-width: 700px) {
     .sidemenu-toggle {
       background-color: transparent;
-      height: max-content;
     }
 
     .sidemenu-container {
@@ -200,6 +199,7 @@
       width: 100vw;
       background-color: rgba(255, 255, 255, 0.89);
       position: absolute;
+      height: 182%;
       overflow-x: hidden;
     }
 
