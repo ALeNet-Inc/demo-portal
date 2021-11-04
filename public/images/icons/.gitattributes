@@ -1,0 +1,7 @@
+Icon-144.png filter=lfs diff=lfs merge=lfs -text
+Icon-20.png filter=lfs diff=lfs merge=lfs -text
+Icon-512.png filter=lfs diff=lfs merge=lfs -text
+Icon-60.png filter=lfs diff=lfs merge=lfs -text
+Icon-64.png filter=lfs diff=lfs merge=lfs -text
+Icon-72.png filter=lfs diff=lfs merge=lfs -text
+Icon-76.png filter=lfs diff=lfs merge=lfs -text
