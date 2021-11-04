@@ -124,5 +124,6 @@
     "error_prompt_2": "Your request could not be processed at this time.",
     "try_again": "Please try again at another time",
     "back": "Go Back",
-    "logout": "Log Out"
+    "logout": "Log Out",
+    "language_selection": "Language Selection... "
 }

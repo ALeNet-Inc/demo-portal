@@ -119,5 +119,6 @@
     "int_earned": "Interés ahorrado",
     "int_paid": "Interés pagado",
     "my-accounts": "Mis Cuentas",
-    "logout": "Salir"
+    "logout": "Salir",
+    "language_selection": "Selección de lenguaje... "
 }

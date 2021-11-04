@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
@@ -35,6 +35,18 @@ function SideMenu() {
     const toggle = () => {
         setSidebar(!sidebar)
     };
+    const [isMobile, setIsMobile] = useState(true);
+    const showMobile = () => {
+        if (window.innerWidth <= 768) {
+            setIsMobile(true);
+        } else {
+            setIsMobile(true);
+        }
+    }
+    useEffect(() => {
+        showMobile();
+    }, []);
+    window.addEventListener('resize', showMobile);
 
     return (
         <>
@@ -42,7 +54,7 @@ function SideMenu() {
                 <Link to="#" className='hamburger'>
                     <FaIcons.FaBars onClick={toggle} />
                 </Link>
-                <Dropdown className="dropdown-side">
+                {isMobile ? null : (<Dropdown className="dropdown-side">
                     <Dropdown.Toggle className="dropdown-side-toggle" variant="success" id="dropdown-side-basic">
                         <GlobeIcon className="globe" /><FaIcons.FaChevronDown />
                     </Dropdown.Toggle>
@@ -59,7 +71,7 @@ function SideMenu() {
                             </li>
                         ))}
                     </Dropdown.Menu>
-                </Dropdown>
+                </Dropdown>)}
             </div>
             <div className={sidebar ? 'sidemenu-container active' : 'sidemenu-container'}>
                 <ul className='sidemenu-items'>
@@ -93,6 +105,26 @@ function SideMenu() {
                             <Io5Icons.IoLogOut className='icon' /><span>{t('logout')}</span>
                         </Link>
                     </li>
+                    {isMobile ? (<li className='sidemenu-text'>
+                        <Dropdown className="dropdown-side">
+                            <Dropdown.Toggle className="dropdown-side-toggle" variant="success" id="dropdown-side-basic">
+                                <GlobeIcon className="globe" />{t('language_selection')}<FaIcons.FaChevronDown />
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu className="dropdown-side-menu black">
+                                <li><span className="dropdown-side-item-text">{t('language')}</span></li>
+                                {languages.map(({ code, name, country_code }) => (
+                                    <li key={country_code} className="dropdown-side-list-item">
+                                        <Dropdown.Item className="dropdown-side-item"
+                                            onClick={() => i18next.changeLanguage(code)}
+                                            disabled={code === currentLanguageCode}>
+                                            <span className={`flag-icon flag-icon-${country_code} mx-2`} style={{ opacity: code === currentLanguageCode ? 0.3 : 1 }}></span> {/* Deactivate button when the current language is active */}
+                                            {name}
+                                        </Dropdown.Item>
+                                    </li>
+                                ))}
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </li>) : null}
                 </ul>
             </div>
         </>

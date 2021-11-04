@@ -174,10 +174,25 @@
   @media screen and (max-width: 700px) {
     .sidemenu-toggle {
       background-color: transparent;
+      height: max-content;
     }
 
     .sidemenu-container {
       left: -100%;
+    }
+
+    .dropdown-side {
+      margin-right: 5vw ;
+    }
+
+    .dropdown-side-toggle {
+      color: black !important;
+      border: black solid 2px;
+      margin: 0;
+      background-color: transparent;
+      display: inline-flex;
+      flex-direction: row;
+      justify-content: space-between;
     }
 
     .sidemenu-container.active {
