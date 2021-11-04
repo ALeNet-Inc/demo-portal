@@ -1,0 +1,11 @@
+clientixlogo.jpg filter=lfs diff=lfs merge=lfs -text
+credit.jpg filter=lfs diff=lfs merge=lfs -text
+customerService.jpg filter=lfs diff=lfs merge=lfs -text
+debit.jpg filter=lfs diff=lfs merge=lfs -text
+loader.gif filter=lfs diff=lfs merge=lfs -text
+loans.jpg filter=lfs diff=lfs merge=lfs -text
+money.jpg filter=lfs diff=lfs merge=lfs -text
+my-transactions.jpg filter=lfs diff=lfs merge=lfs -text
+my-trusts.jpg filter=lfs diff=lfs merge=lfs -text
+savings.jpg filter=lfs diff=lfs merge=lfs -text
+settings.jpg filter=lfs diff=lfs merge=lfs -text
