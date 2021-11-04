@@ -3,7 +3,7 @@
     background: rgb(0, 0, 0);
   }
   
-  .cards h1 {
+  .cards-header {
     color: white;
     font-size: 3rem;
     font-weight: 400;

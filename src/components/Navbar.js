@@ -107,7 +107,7 @@ function Navbar(props) {
             </li>
             <li className="nav-item">
               <Dropdown className="dropdown">
-                <Dropdown.Toggle className="dropdown-toggle" variant="success" id="dropdown-basic">
+                <Dropdown.Toggle name='Globe Icon Button'className="dropdown-toggle" variant="success" id="dropdown-basic">
                   <GlobeIcon className="globe" /><FaIcons.FaChevronDown id='chevron-down' />
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="dropdown-menu">

@@ -12,7 +12,7 @@ function Cards() {
 
     return (
         <div className='cards'>
-            <h1 >{t('browse_options')}</h1>
+            <h1 className='cards-header'>{t('browse_options')}</h1>
             <div className="cards__container">
                 <div className="cards__wrapper">
                     <ul className="cards__items">
