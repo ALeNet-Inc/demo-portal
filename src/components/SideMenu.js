@@ -31,7 +31,7 @@ const GlobeIcon = ({ width = 24, height = 24 }) => (<svg xmlns="http://www.w3.or
 function SideMenu() {
     const currentLanguageCode = Cookies.get('i18next') || 'en'; //the current language selected
     const { t } = useTranslation();
-    const [sidebar, setSidebar] = useState(true);
+    const [sidebar, setSidebar] = useState(false);
     const toggle = () => {
         setSidebar(!sidebar)
     };

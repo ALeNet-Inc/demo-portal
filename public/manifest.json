@@ -3,9 +3,41 @@
   "name": "Clientix Demo Portal",
   "icons": [
     {
-      "src": "/images/clientixlogo.jpg",
-      "type": "image/jpg",
-      "sizes": "96x42"
+      "src": "/images/icons/Icon-20.png",
+      "type": "image/png",
+      "sizes": "20 x 20"
+    },
+    {
+      "src": "/images/icons/Icon-60.png",
+      "type": "image/png",
+      "sizes": "60 x 60"
+    },
+    {
+      "src": "/images/icons/Icon-64.png",
+      "type": "image/png",
+      "sizes": "64 x 64",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/icons/Icon-72.png",
+      "type": "image/png",
+      "sizes": "72 x 72"
+    },
+    {
+      "src": "/images/icons/Icon-76.png",
+      "type": "image/png",
+      "sizes": "76 x 76"
+    },
+    {
+      "src": "/images/icons/Icon-512.png",
+      "type": "image/png",
+      "sizes": "512 x 512"
+    },
+    {
+      "src": "/images/icons/Icon-144.png",
+      "type": "image/png",
+      "sizes": "144 x 144",
+      "purpose": "any"
     }
   ],
   "start_url": ".",
