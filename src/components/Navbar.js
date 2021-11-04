@@ -105,24 +105,6 @@ function Navbar(props) {
                 {t('products')}
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link
-                to='/sign-up'
-                className='nav-links-mobile'
-                onClick={closeMobileMenu}
-              >
-                {t('sign_up')}
-              </Link>
-            </li>
-            <li className='nav-item'>
-              <Link
-                to='/login'
-                className='nav-links-mobile'
-                onClick={closeMobileMenu}
-              >
-                {t('login')}
-              </Link>
-            </li>
             <li className="nav-item">
               <Dropdown className="dropdown">
                 <Dropdown.Toggle className="dropdown-toggle" variant="success" id="dropdown-basic">
@@ -142,6 +124,24 @@ function Navbar(props) {
                   ))}
                 </Dropdown.Menu>
               </Dropdown>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/sign-up'
+                className='nav-links-mobile'
+                onClick={closeMobileMenu}
+              >
+                {t('sign_up')}
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/login'
+                className='nav-links-mobile'
+                onClick={closeMobileMenu}
+              >
+                {t('login')}
+              </Link>
             </li>
           </ul>
           {button && <Button link='/login' buttonStyle='btn--outline'>{t('login')}</Button>}

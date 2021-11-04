@@ -144,6 +144,18 @@
     position: relative;
   }
 
+  .dropdown {
+    width: 30%;
+  }
+
+  .dropdown-toggle {
+    color: black;
+    border: solid 2px black;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
   .navbar-logo {
     font-size: 1.5rem !important;
   }
@@ -152,11 +164,12 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 90vh;
+    height: 200vh;
     position: absolute;
     top: 80px;
     left: -100%;
     transition: all 0.5s ease;
+    justify-content: flex-start;
   }
 
   .nav-menu.active {
@@ -167,6 +180,7 @@
   }
 
   .nav-links {
+    margin-top: 5vh;
     text-align: center;
     padding: 2rem;
     width: 100%;
