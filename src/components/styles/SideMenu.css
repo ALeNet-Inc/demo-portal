@@ -171,7 +171,7 @@
     color: #fff;
   }
 
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 758px) {
     .sidemenu-toggle {
       background-color: transparent;
     }

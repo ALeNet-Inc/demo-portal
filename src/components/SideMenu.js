@@ -35,12 +35,12 @@ function SideMenu() {
     const toggle = () => {
         setSidebar(!sidebar)
     };
-    const [isMobile, setIsMobile] = useState(true);
+    const [isMobile, setIsMobile] = useState(false);
     const showMobile = () => {
         if (window.innerWidth <= 768) {
             setIsMobile(true);
         } else {
-            setIsMobile(true);
+            setIsMobile(false);
         }
     }
     useEffect(() => {
