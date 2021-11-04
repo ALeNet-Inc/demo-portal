@@ -12,7 +12,7 @@ function HeroSection() {
 
     return (
         <div className='hero-container'>
-            <img src='images/savings.jpg' alt='city' className='background' />
+            <img src='images/savings.webp' alt='city' className='background' />
             <h1> {t('achieve_freedom_msg')} </h1>
             <p> {t('waiting_for_msg')} </p>
             <div className='hero-btns'>

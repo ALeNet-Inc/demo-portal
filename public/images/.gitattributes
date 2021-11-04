@@ -9,3 +9,14 @@ my-transactions.jpg filter=lfs diff=lfs merge=lfs -text
 my-trusts.jpg filter=lfs diff=lfs merge=lfs -text
 savings.jpg filter=lfs diff=lfs merge=lfs -text
 settings.jpg filter=lfs diff=lfs merge=lfs -text
+clientixlogo.webp filter=lfs diff=lfs merge=lfs -text
+credit.webp filter=lfs diff=lfs merge=lfs -text
+customerService.webp filter=lfs diff=lfs merge=lfs -text
+debit.webp filter=lfs diff=lfs merge=lfs -text
+icons filter=lfs diff=lfs merge=lfs -text
+loans.webp filter=lfs diff=lfs merge=lfs -text
+money.webp filter=lfs diff=lfs merge=lfs -text
+my-transactions.webp filter=lfs diff=lfs merge=lfs -text
+my-trusts.webp filter=lfs diff=lfs merge=lfs -text
+savings.webp filter=lfs diff=lfs merge=lfs -text
+settings.webp filter=lfs diff=lfs merge=lfs -text

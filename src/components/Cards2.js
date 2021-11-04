@@ -16,13 +16,13 @@ function Cards2() {
                 <div className="cards__wrapper">
                     <ul className="cards__items">
                         <CardItem 
-                            src='images/my-trusts.jpg'
+                            src='images/my-trusts.webp'
                             text={t('my-trusts')}
                             label={t('trust_prompt')}
                             path='/my-trusts'
                         />
                         <CardItem 
-                            src='images/my-transactions.jpg'
+                            src='images/my-transactions.webp'
                             text={t('my-transactions')}
                             label={t('transactions_prompt')}
                             path='/my-transactions'
@@ -30,19 +30,19 @@ function Cards2() {
                     </ul>
                     <ul className="cards__items">
                         <CardItem 
-                            src='images/credit.jpg'
+                            src='images/credit.webp'
                             text={t('my-accounts')}
                             label={t('acc_prompt')}
                             path='/my-accounts'
                         />
                         <CardItem 
-                            src='images/settings.jpg'
+                            src='images/settings.webp'
                             text={t('settings')}
                             label={t('settings_prompt')}
                             path='/settings'
                         />
                         <CardItem 
-                            src='images/customerService.jpg'
+                            src='images/customerService.webp'
                             text={t('service_requests')}
                             label={t('request_prompt')}
                             path='/service-request'

@@ -17,13 +17,13 @@ function Cards() {
                 <div className="cards__wrapper">
                     <ul className="cards__items">
                         <CardItem 
-                            src='images/credit.jpg'
+                            src='images/credit.webp'
                             text={t('credit_options')}
                             label={t('rewards')}
                             path='/services'
                         />
                         <CardItem 
-                            src='images/loans.jpg'
+                            src='images/loans.webp'
                             text={t('loan_today')}
                             label={t('low_interest')}
                             path='/services'
@@ -31,19 +31,19 @@ function Cards() {
                     </ul>
                     <ul className="cards__items">
                         <CardItem 
-                            src='images/debit.jpg'
+                            src='images/debit.webp'
                             text={t('awesome_debit')}
                             label={t('service')}
                             path='/services'
                         />
                         <CardItem 
-                            src='images/money.jpg'
+                            src='images/money.webp'
                             text={t('saving_accounts')}
                             label={t('high_return_interest')}
                             path='/services'
                         />
                         <CardItem 
-                            src='images/customerService.jpg'
+                            src='images/customerService.webp'
                             text={t('account_service')}
                             label={t('example_email')}
                             path='/services'

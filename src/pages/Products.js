@@ -9,7 +9,6 @@ function Products() {
     const {t} = useTranslation(); //react-i18-next
     return (
         <div className="products-background">
-            <img src='../../images/city4.jpg' className='background' alt='city' style= {{ opacity: 0.7 }} />
             <h1 className='products'>{t('products')}</h1>
         </div>
         
