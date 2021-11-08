@@ -1,11 +1,8 @@
-.background {
-    background: black;
-}
+
 
 .mytrusts{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+   position: absolute;
+   background: black;
 }
 
 
@@ -45,4 +42,41 @@
     font-weight: 300;
     color: white;
     padding: 4px;
+}
+
+@media screen and (max-width: 758px) {
+    .mytrusts {
+        position: fixed;
+        width: 100vw;   
+        overflow-x: hidden;
+        overflow-y: scroll;
+        height:100%;
+    }
+
+    .my-trusts-container {
+        width: 98%;
+        overflow-x: hidden;
+        z-index: -999; 
+        margin: 8vh 0 0 0;
+        text-align: center;
+    }
+
+    .my-trusts-table {
+        height: 100%;
+    }
+
+    .my-trusts-title {
+        font-size: 3rem;
+    }
+
+    .my-trusts-table td {
+        padding: 0px !important;
+        max-width: 100px;
+        font-size: 0.9rem;
+        overflow: hidden;
+    }
+
+    .my-trusts-table th {
+        font-size: 0.9rem;
+    }
 }
