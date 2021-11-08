@@ -2,6 +2,7 @@
 
 .mytransactions{
     position: absolute;
+    z-index: -9999;
     background: black;
  }
  

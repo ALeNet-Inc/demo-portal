@@ -1,44 +1,83 @@
-.my-accounts-container {
+
+
+.myaccounts{
+    position: absolute;
+    z-index: -9999;
     background: black;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-}
-
-.my-accounts-wrapper {
-    width: 80vw;
-    height: 90vh;
-    margin: 10vh 0 0 21vw;
-    z-index: -1;
-    position: relative;
-    overflow-y: scroll;
-    overflow-x: scroll;
-}
-
-.my-accounts-title {
-    color:rgb(255, 255, 255);
-    font-size: 5rem;
-    padding-top: 10px;
-    font-weight: 200;
-}
-
-.my-accounts-table {
-    margin: 10px;
-    width: 95%;
-}
-
-.my-accounts-table th {
-    border-bottom: thick solid rgb(255, 174, 0);
-    color:rgb(255, 255, 255);
-    border-radius: 4px;
-    font-size: 1.1rem;
-    font-weight: bolder;
-}
-
-.my-accounts-table td {
-    border-right: thin solid rgb(255, 255, 255);
-    border-bottom:thin solid rgb(255, 255, 255);
-    font-weight: 300;
-    color: white;
-    padding: 4px;
-}
+ }
+ 
+ 
+ .my-accounts-container {
+     width: 80vw;
+     height: 90vh;
+     background: rgb(0, 0, 0);
+     margin: 10vh 0 0 21vw;
+     position: relative;
+     overflow-y: scroll;
+     overflow-x: scroll;
+ }
+ 
+ .my-accounts-title {
+     color:rgb(255, 255, 255);
+     font-size: 5rem;
+     padding-top: 10px;
+     font-weight: 200;
+ }
+ 
+ .my-accounts-table {
+     margin: 10px;
+     width: 95%;
+ }
+ 
+ .my-accounts-table th {
+     border-bottom: thick solid rgb(255, 174, 0);
+     color:rgb(255, 255, 255);
+     border-radius: 4px;
+     font-size: 1.1rem;
+     font-weight: bolder;
+ }
+ 
+ .my-accounts-table td {
+     border-right: thin solid rgb(255, 255, 255);
+     border-bottom:thin solid rgb(255, 255, 255);
+     font-weight: 300;
+     color: white;
+     padding: 4px;
+ }
+ 
+ @media screen and (max-width: 758px) {
+     .myaccounts {
+         position: fixed;
+         width: 100vw;   
+         overflow-x: hidden;
+         overflow-y: scroll;
+         height:100%;
+     }
+ 
+     .my-accounts-container {
+         width: 98%;
+         overflow-x: hidden;
+         z-index: -999; 
+         margin: 8vh 0 0 0;
+         text-align: center;
+     }
+ 
+     .my-accounts-table {
+         height: 100%;
+     }
+ 
+     .my-accounts-title {
+         font-size: 3rem;
+     }
+ 
+     .my-accounts-table td {
+         padding: 0px !important;
+         max-width: 85px;
+         font-size: 0.9rem;
+         overflow: hidden;
+     }
+ 
+     .my-accounts-table th {
+         font-size: 0.9rem;
+     }
+ }

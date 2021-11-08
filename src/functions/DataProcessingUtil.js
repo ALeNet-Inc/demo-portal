@@ -61,12 +61,17 @@ export default class DataProcessingUtil {
 
         let propArray = transactionProperties[0];
 
+        let dollarUs = Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
+
         /*ARRAY SETUP: 0=ID, 1=IDCODE , 3=EFFTDATE  5=REVERSAL_PEND 6=TRANSTBL_CODE
                         7=CURRENCY_CODE 8=TRANS_AMT 9=TAXABLE_AMT 10=TAX_AMT 11=TOTAL_AMT 12=EXCHANGE_RT 13=BASE_TRANS_AMT
                         14=CONTRACT_NAME 15=DISBURSEMENT_TYPE 16=VOID 17=CHECK_NO 18=CHECK_PRINT_DATI 19=CHECK_PRINT_BY */
         let transInfo = propArray.map((elem, index) => {
             let status = elem[4].contents
-            let ammount = elem[8].contents
+            let ammount = dollarUs.format(parseFloat(elem[8].contents))
             let name = this.toTitleCase(elem[2].contents)
             let contract = this.toTitleCase(elem[14].contents)
             return (
@@ -96,24 +101,23 @@ export default class DataProcessingUtil {
         let propArray = accountProperties[0];
         console.log(propArray);
 
+        let dollarUs = Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
+
         /*ARRAY SETUP: 0=Company, 1=account type, 3=account_code,  4=account_no, 5=contract_name, 7=balance, 8=interest_earned, 9=interest_paid */
         let accountInfo = propArray.map((elem, index) => {
-            let company = elem[0].contents
             let account_type = elem[1].contents
             let account_no = elem[4].contents
-            let contract = this.toTitleCase(this.removeUglyChars(elem[5].contents));
-            let balance = elem[7].contents
-            let int_earned = elem[8].contents
-            let int_paid = elem[9].contents
+            let balance = dollarUs.format(parseFloat(elem[7].contents))
+            let int_earned = dollarUs.format(parseFloat(elem[8].contents))
             return (
                 <tr key={index}>
-                    <td className='acc-status' key="{elem[0]}">{company}</td>
-                    <td className='acc-ammount' key="{elem[1]}">{account_type}</td>
-                    <td className='acc-name' key="{elem[4]}">{account_no}</td>
-                    <td className='acc-contract' key="{elem[5]}">{contract}</td>
+                    <td className='acc-type' key="{elem[1]}">{account_type}</td>
+                    <td className='acc-no' key="{elem[4]}">{account_no}</td>
                     <td className='acc-balance' key="{elem[7]">{balance}</td>
                     <td className='acc-int_earned' key="{elem[8]">{int_earned}</td>
-                    <td className='acc-int_paid' key="{elem[9]">{int_paid}</td>
                 </tr>
             )
 
