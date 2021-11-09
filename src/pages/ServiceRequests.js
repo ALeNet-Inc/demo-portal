@@ -41,26 +41,27 @@ function ServiceRequests() {
     ]
 
     return (
-        <div className='background'>
+        <div className='service-requests'>
             <Sidebar />
-            <div className='service-requests'>
-                <div className='service-form-container'>
-                    <h1 className='form-title'>{t("customer-support")}</h1>
-                    <p className='dropdown-prompt'>{t('what-help-with')}</p>
-                    <div className='top-section'>
-                        <Dropdown id='service-dropdown' placeholder={t('what-help-with')} options={serviceRequestOptions} onChange={dropdownHandler} />
-                        <label className='upload-prompt'>You may upload documents to display your problem more clearly. Choose a File to upload: </label>
+            <div className='service-form-container'>
+                <h1 className='form-title'>{t("customer-support")}</h1>
+                <p className='dropdown-prompt'>{t('what-help-with')}</p>
+                <div className='top-section'>
+                    <Dropdown id='service-dropdown' placeholder={t('what-help-with')} options={serviceRequestOptions} onChange={dropdownHandler} />
+                    <br />
+                    <label className='upload-prompt'>
                         <input type='file' className='fileUpload' />
-                    </div>
-                    <h2 className='text-prompt'>{t('problem-description')}</h2>
-                    <TextArea onChange={textHandler} />
-                    <h3 className='contact-prompt'>{t('contact_prompt')}
-                        <a className='phone_no' href='tel:+178649-2258'>+1 (786) 749-2258</a>
-                        {t('contact_prompt_2')}
-                        <a className='email' href='mailto: support@alenet.com'>support@alenet.com</a>
-                    </h3>
-                    <button className='service-btn-submit' onClick={handleSubmit}> {t('submit-req')} </button>
+                        Upload File
+                    </label>
                 </div>
+                <h2 className='text-prompt'>{t('problem-description')}</h2>
+                <TextArea onChange={textHandler} />
+                <h3 className='contact-prompt'>{t('contact_prompt')}
+                    <a className='phone_no' href='tel:+178649-2258'>+1 (786) 749-2258</a>
+                    {t('contact_prompt_2')}
+                    <a className='email' href='mailto: support@alenet.com'>support@alenet.com</a>
+                </h3>
+                <button className='service-btn-submit' onClick={handleSubmit}> {t('submit-req')} </button>
             </div>
             <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
                 <h3>{t('request_success') + serviceOption}</h3>
