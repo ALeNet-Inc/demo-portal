@@ -165,6 +165,12 @@ export default class ClientixAPI {
         }, 0);
     }
 
+    logOut() {
+        Cookies.remove('session_token');
+        localStorage.clear();
+        sessionStorage.clear();
+    }
+
 
     async getUserData(username, password, showLoader, hideLoader) {
         await this.login(username, password, showLoader)

@@ -65,6 +65,7 @@ function Navbar(props) {
   if (location.pathname.match('/account')
     || location.pathname.match('/my-trusts')
     || location.pathname.match('/service-request')
+    || location.pathname.match('login-error')
     || location.pathname.match('/my-transactions')
     || location.pathname.match('/my-accounts')) {
     return null;

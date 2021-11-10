@@ -13,6 +13,7 @@ import MyTrusts from './pages/MyTrusts';
 import MyTransactions from './pages/MyTransactions';
 import ServiceRequests from './pages/ServiceRequests';
 import MyAccounts from './pages/MyAccounts';
+import LoginError from './pages/LoginError';
 
 /* Main App component where everything is routed */
 
@@ -33,6 +34,7 @@ function App() {
           <Route path='/my-transactions' component={MyTransactions} />
           <Route path='/service-request' component={ServiceRequests} />
           <Route path='/my-accounts' component={MyAccounts} />
+          <Route path='/login-error' component={LoginError} />
         </Switch>
       </Router>
     </>

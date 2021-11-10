@@ -8,6 +8,7 @@ import i18next from 'i18next'
 import { useTranslation } from 'react-i18next';
 import { Dropdown } from 'react-bootstrap';
 import Cookies from 'js-cookie';
+import ClientixAPI from '../functions/ClientixAPI';
 import './styles/SideMenu.css';
 
 const languages = [
@@ -29,6 +30,7 @@ const GlobeIcon = ({ width = 24, height = 24 }) => (<svg xmlns="http://www.w3.or
 </svg>)
 
 function SideMenu() {
+    const clx = new ClientixAPI();
     const currentLanguageCode = Cookies.get('i18next') || 'en'; //the current language selected
     const { t } = useTranslation();
     const [sidebar, setSidebar] = useState(false);
@@ -101,7 +103,7 @@ function SideMenu() {
                         </Link>
                     </li>
                     <li className='sidemenu-text'>
-                        <Link to='/' className='side-link'>
+                        <Link onClick={clx.logOut} to='/' className='side-link'>
                             <Io5Icons.IoLogOut className='icon' /><span>{t('logout')}</span>
                         </Link>
                     </li>
