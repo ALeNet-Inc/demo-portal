@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router'
 import SideMenu from '../components/SideMenu'
 import DataProcessingUtil from '../functions/DataProcessingUtil'
+import Table from '../components/Table';
 import './styles/MyAccounts.css'
 
 function MyAccounts() {
@@ -17,22 +18,35 @@ function MyAccounts() {
         history.push('/accounts-error');
     }
 
+    const columns = useMemo(
+        () => [
+            {
+                Header: t('account_type'),
+                accessor: "account.type"
+            },
+            {
+                Header: t('account_no'),
+                accessor: "account.account_no"
+            },
+            {
+                Header: t('balance'),
+                accessor: "account.balance"
+            },
+            {
+                Header: t('int_earned'),
+                accessor: "account.int_earned"
+            },
+        ],
+        [t]
+    );
+
+
     return (
         <div className='myaccounts'>
             <SideMenu />
             <div className='my-accounts-container'>
                 <h1 className='my-accounts-title'>{t('my-accounts')}</h1>
-                <table className='my-accounts-table'>
-                    <thead>
-                        <tr className='headers'>
-                            <th className='table-header'>{t('account_type')}</th>
-                            <th className='table-header'>{t('account_no')}</th>
-                            <th className='table-header'>{t('balance')}</th>
-                            <th className='table-header'>{t('int_earned')}</th>
-                        </tr>
-                    </thead>
-                    <tbody id='my-accounts-table'>{myAccounts}</tbody>
-                </table>
+                <Table columns={columns} data={myAccounts} name='custom-table' />
             </div>
         </div>
     )

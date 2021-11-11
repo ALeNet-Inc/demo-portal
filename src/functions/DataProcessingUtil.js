@@ -101,38 +101,33 @@ export default class DataProcessingUtil {
         if (!accountObjArray[0].objects) {
             return null;
         }
-
-        let accountProperties = accountObjArray.map(account => {
-            return account.objects.map(elem => {
-                return elem.objects.map(obj => {
-                    return obj;
-                });
-            })
-        });
-
-        let propArray = accountProperties[0];
+        let accountArray = accountObjArray[0].objects.map(obj => { return obj.objects });
         let dollarUs = Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
-        });
-
-        /*ARRAY SETUP: 0=Company, 1=account type, 3=account_code,  4=account_no, 5=contract_name, 7=balance, 8=interest_earned, 9=interest_paid */
-        let accountInfo = propArray.map((elem, index) => {
-            let account_type = elem[1].contents
-            let account_no = elem[4].contents
-            let balance = dollarUs.format(parseFloat(elem[7].contents))
-            let int_earned = dollarUs.format(parseFloat(elem[8].contents))
-            return (
-                <tr key={index}>
-                    <td className='acc-type' key="{elem[1]}">{account_type}</td>
-                    <td className='acc-no' key="{elem[4]}">{account_no}</td>
-                    <td className='acc-balance' key="{elem[7]">{balance}</td>
-                    <td className='acc-int_earned' key="{elem[8]">{int_earned}</td>
-                </tr>
-            )
-
         })
-        return accountInfo;
+        let accountInfo = accountArray.map(elem => {
+            let accountType = this.removeUglyChars(this.toTitleCase(elem[1].contents));
+            let accountNo = this.removeUglyChars(elem[4].contents);
+            let balance = dollarUs.format(parseFloat(elem[7].contents));
+            let intEarned = dollarUs.format(parseFloat(elem[8].contents));
+            return {
+                "account" : {
+                    type: accountType,
+                    account_no: accountNo,
+                    balance: balance,
+                    int_earned: intEarned
+                }
+            }
+        })
+
+        let filteredInfo = accountInfo.filter((acc, index, self) => (
+            index === self.findIndex((t) => (
+                t.account.account_no === acc.account.account_no
+            ))
+        ))
+
+        return filteredInfo;
     }
 
     /**

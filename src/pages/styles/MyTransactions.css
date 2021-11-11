@@ -24,26 +24,6 @@
      font-weight: 200;
  }
  
- .my-transactions-table {
-     margin: 10px;
-     width: 95%;
- }
- 
- .my-transactions-table th {
-     border-bottom: thick solid rgb(255, 174, 0);
-     color:rgb(255, 255, 255);
-     border-radius: 4px;
-     font-size: 1.1rem;
-     font-weight: bolder;
- }
- 
- .my-transactions-table td {
-     border-right: thin solid rgb(255, 255, 255);
-     border-bottom:thin solid rgb(255, 255, 255);
-     font-weight: 300;
-     color: white;
-     padding: 4px;
- }
  
  @media screen and (max-width: 758px) {
      .mytransactions {
@@ -60,24 +40,5 @@
          z-index: -999; 
          margin: 8vh 0 0 0;
          text-align: center;
-     }
- 
-     .my-transactions-table {
-         height: 100%;
-     }
- 
-     .my-transactions-title {
-         font-size: 3rem;
-     }
- 
-     .my-transactions-table td {
-         padding: 0px !important;
-         max-width: 100px;
-         font-size: 0.9rem;
-         overflow: hidden;
-     }
- 
-     .my-transactions-table th {
-         font-size: 0.9rem;
      }
  }
