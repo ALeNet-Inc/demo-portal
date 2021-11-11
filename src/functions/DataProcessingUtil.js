@@ -91,6 +91,7 @@ export default class DataProcessingUtil {
                 t.transaction.contract === transaction.transaction.contract && t.transaction.name === transaction.transaction.name
             ))
         ))
+        console.log(filteredInfo)
         return filteredInfo;
     }
 

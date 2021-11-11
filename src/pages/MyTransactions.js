@@ -48,7 +48,13 @@ function MyTransactions() {
             <Sidebar />
             <div className='my-transactions-container'>
                 <h1 className='my-transactions-title'>{t('my-transactions')}</h1>
-                <Table columns={columns} data={mytransactions} name='custom-table' />
+                {
+                    mytransactions ? (
+                        <Table columns={columns} data={mytransactions} name='custom-table' />
+                    ) : (
+                        null
+                    )
+                }
             </div>
         </div>
     )

@@ -47,7 +47,13 @@ function MyTrusts() {
             <Sidebar className='sidebar' />
             <div className='my-trusts-container'>
                 <h1 className='my-trusts-title'>{t('my-trusts')}</h1>
-                <Table columns={columns} data={myTrusts} name='custom-table'/>
+                {
+                    myTrusts ? (
+                        <Table columns={columns} data={myTrusts} name='custom-table' />
+                    ) : (
+                        null
+                    )
+                }
             </div>
         </div>
     )

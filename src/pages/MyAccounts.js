@@ -46,7 +46,13 @@ function MyAccounts() {
             <SideMenu />
             <div className='my-accounts-container'>
                 <h1 className='my-accounts-title'>{t('my-accounts')}</h1>
-                <Table columns={columns} data={myAccounts} name='custom-table' />
+                {
+                    myAccounts ? (
+                        <Table columns={columns} data={myAccounts} name='custom-table' />
+                    ) : (
+                        null
+                    )
+                }
             </div>
         </div>
     )
