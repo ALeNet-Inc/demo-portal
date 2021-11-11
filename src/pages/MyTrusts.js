@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import './styles/MyTrusts.css'
 import { useTranslation } from 'react-i18next';
 import DataProcessingUtil from '../functions/DataProcessingUtil';
 import Sidebar from '../components/SideMenu'
+import Table from '../components/Table';
 import { useHistory } from 'react-router';
 
 /* A page with all trust banking information for a user */
@@ -20,22 +21,37 @@ function MyTrusts() {
 
     const { t } = useTranslation(); //react-i18-next
 
+    const columns = useMemo(
+        () => [
+            {
+                Header: t('contract-no'),
+                accessor: "trust.contract_no"
+            },
+            {
+                Header: t('contract-name'),
+                accessor: "trust.contract_name"
+            },
+            {
+                Header: t('fico-type'),
+                accessor: "trust.fico_type"
+            },
+            {
+                Header: t('contract-date'),
+                accessor: "trust.date"
+            },
+        ],
+        [t]
+    );
+
+    console.log(columns)
+    console.log(myTrusts)
+
     return (
         <div className='mytrusts'>
-            <Sidebar className='sidebar'/>
+            <Sidebar className='sidebar' />
             <div className='my-trusts-container'>
                 <h1 className='my-trusts-title'>{t('my-trusts')}</h1>
-                <table className='my-trusts-table'>
-                    <thead>
-                        <tr className='headers'>
-                            <th className='table-header'>{t('contract-no')}</th>
-                            <th className='table-header'>{t('contract-name')}</th>
-                            <th className='table-header'>{t('contract-date')}</th>
-                            <th className='table-header'>{t('fico-type')}</th>
-                        </tr>
-                    </thead>
-                    <tbody id='trusts'>{myTrusts}</tbody>
-                </table>
+                <Table columns={columns} data={myTrusts} name='custom-table'/>
             </div>
         </div>
     )

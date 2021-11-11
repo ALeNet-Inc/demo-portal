@@ -23,27 +23,6 @@
     font-weight: 200;
 }
 
-.my-trusts-table {
-    margin: 10px;
-    width: 95%;
-}
-
-.my-trusts-table th {
-    border-bottom: thick solid rgb(255, 174, 0);
-    color:rgb(255, 255, 255);
-    border-radius: 4px;
-    font-size: 1.1rem;
-    font-weight: bolder;
-}
-
-.my-trusts-table td {
-    border-right: thin solid rgb(255, 255, 255);
-    border-bottom:thin solid rgb(255, 255, 255);
-    font-weight: 300;
-    color: white;
-    padding: 4px;
-}
-
 @media screen and (max-width: 758px) {
     .mytrusts {
         position: fixed;
@@ -67,16 +46,5 @@
 
     .my-trusts-title {
         font-size: 3rem;
-    }
-
-    .my-trusts-table td {
-        padding: 0px !important;
-        max-width: 100px;
-        font-size: 0.9rem;
-        overflow: hidden;
-    }
-
-    .my-trusts-table th {
-        font-size: 0.9rem;
     }
 }

@@ -14,42 +14,49 @@ export default class DataProcessingUtil {
         //obtain trust infromation from user's local storage and process to json. propArray contains all trustProperties.
         let myTrusts = sessionStorage.getItem('myTrusts');
         let trustsObj = JSON.parse(myTrusts);
-        if(!trustsObj[0].objects) {
+        if (!trustsObj[0].objects) {
             return null;
         }
-        let trustsProperties = trustsObj.map(trust => {
-            return trust.objects.map(elem => {
-                return elem.objects.map(obj => {
-                    return obj;
-                });
-            })
-        });
-        let propArray = trustsProperties[0];
+        let trustObjectArray = trustsObj[0].objects;
+        let trustArray = trustObjectArray.map(obj => {
+            return obj.objects;
+        })
 
         /*ARRAY SETUP: elem[0] : ID, elem[1] : FICO No., elem[2] : Contract No., elem[3] : irrelevant
                        elem[4] : Contract Name, elem[5] : Contract Start date, elem[6]: irrelevant, elem[7] : Trust type */
-        let trustInfo = propArray.map((elem, index) => {
+        let trustInfo = trustArray.map((elem) => {
             let date = new Date(elem[5].contents); //Pretty format the date for usability.
             let year = new Intl.DateTimeFormat(Cookies.get('i18next'), { year: 'numeric' }).format(date);
             let month = new Intl.DateTimeFormat(Cookies.get('i18next'), { month: 'short' }).format(date);
             let day = new Intl.DateTimeFormat(Cookies.get('i18next'), { year: '2-digit' }).format(date);
             let dateString = `${year}-${month}-${day}`;
-            return (
-                <tr key={index}>
-                    <td className='fico-contract-num' key="{elem[2]}">{this.removeUglyChars(elem[2].contents)}</td>
-                    <td className='fico-contract-name' key="{elem[4]}">{this.removeUglyChars(this.toTitleCase(elem[4].contents))}</td>
-                    <td className='fico-contract-date' key="{elem[5]}">{dateString}</td>
-                    <td className='fico-type' key="{elem[7]}">{elem[7].contents}</td>
-                </tr>
-            )
+            let contractNo = this.removeUglyChars(elem[2].contents);
+            let contractName = this.removeUglyChars(this.toTitleCase(elem[4].contents));
+            let ficoType = elem[7].contents
+            return {
+                "trust": {
+                    contract_no: contractNo,
+                    contract_name: contractName,
+                    fico_type: ficoType,
+                    date: dateString
+                }
+            }
         })
-        return trustInfo;
+
+
+        let filtered = trustInfo.filter((trust, index, self) => (
+            index === self.findIndex((t) => (
+                t.trust.contract_no === trust.trust.contract_no && t.trust.contract_name === trust.trust.contract_name
+            ))
+        ))
+
+        return filtered;
     }
 
     /**
-     * Function to process the trust information stored by the @module ClientixAPI [MY_TRANSACT]{@link http://oxygen.alenet.com/clx56dev/apirest.php?classname=MY_TRANSACT} endpoint in the user's local storage.
-     * @returns An HTML table with the extracted trust information from the user's local storage
-     */
+* Function to process the trust information stored by the @module ClientixAPI [MY_TRANSACT]{@link http://oxygen.alenet.com/clx56dev/apirest.php?classname=MY_TRANSACT} endpoint in the user's local storage.
+* @returns An HTML table with the extracted trust information from the user's local storage
+*/
     populateTransactions() {
         //obtain transaction infromation from user's local storage and process to json. propArray contains all trustProperties.
         let myTransactions = sessionStorage.getItem('myTransactions');
@@ -99,7 +106,7 @@ export default class DataProcessingUtil {
         if (!accountObjArray[0].objects) {
             return null;
         }
-        
+
         let accountProperties = accountObjArray.map(account => {
             return account.objects.map(elem => {
                 return elem.objects.map(obj => {
