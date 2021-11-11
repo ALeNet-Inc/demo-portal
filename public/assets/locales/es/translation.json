@@ -123,5 +123,7 @@
     "language_selection": "Selección de lenguaje... ",     
     "error_prompt": "Oops! Hubo un error.",
     "error_prompt_2": "Tu pedido no ha sido completado.",
-    "try_again": "Por favor, intentelo de nuevo."
+    "try_again": "Por favor, intentelo de nuevo.",
+    "currency": "Moneda",
+    "name": "Nombre"
 }

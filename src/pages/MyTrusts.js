@@ -12,7 +12,7 @@ function MyTrusts() {
 
     //Populate HTML table with Trust information
     const dataProcessor = new DataProcessingUtil();
-    const myTrusts = dataProcessor.populateTable();
+    const myTrusts = dataProcessor.populateTrusts();
     const history = useHistory();
 
     if (myTrusts === null) {
@@ -42,10 +42,6 @@ function MyTrusts() {
         ],
         [t]
     );
-
-    console.log(columns)
-    console.log(myTrusts)
-
     return (
         <div className='mytrusts'>
             <Sidebar className='sidebar' />

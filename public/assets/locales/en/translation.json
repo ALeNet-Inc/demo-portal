@@ -125,5 +125,7 @@
     "try_again": "Please try again at another time",
     "back": "Go Back",
     "logout": "Log Out",
-    "language_selection": "Language Selection... "
+    "language_selection": "Language Selection... ",
+    "currency": "Currency",
+    "name": "Name"
 }

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import './styles/MyTransactions.css'
 import { useTranslation } from 'react-i18next';
 import DataProcessingUtil from '../functions/DataProcessingUtil';
-import Sidebar from '../components/SideMenu'
+import Sidebar from '../components/SideMenu';
+import Table from '../components/Table';
 import { useHistory } from 'react-router';
 
 /* A page with all trust banking information for a user */
@@ -16,26 +17,38 @@ function MyTransactions() {
 
     const { t } = useTranslation(); //react-i18-next
 
-    if(mytransactions === null) {
+    if (mytransactions === null) {
         history.push('/transactions-error');
     }
+
+    const columns = useMemo(
+        () => [
+            {
+                Header: t('transaction-status'),
+                accessor: "transaction.status"
+            },
+            {
+                Header: t('transaction-amt'),
+                accessor: "transaction.ammount"
+            },
+            {
+                Header: t('transaction-contract'),
+                accessor: "transaction.contract"
+            },
+            {
+                Header: t('name'),
+                accessor: "transaction.name"
+            },
+        ],
+        [t]
+    );
 
     return (
         <div className='mytransactions'>
             <Sidebar />
             <div className='my-transactions-container'>
                 <h1 className='my-transactions-title'>{t('my-transactions')}</h1>
-                <table className='my-transactions-table'>
-                    <thead>
-                        <tr className='headers'>
-                            <th className='table-header'>{t('transaction-status')}</th>
-                            <th className='table-header'>{t('transaction-amt')}</th>
-                            <th className='table-header'>{t('transaction-comments')}</th>
-                            <th className='table-header'>{t('transaction-contract')}</th>
-                        </tr>
-                    </thead>
-                    <tbody id='transactions'>{mytransactions}</tbody>
-                </table>
+                <Table columns={columns} data={mytransactions} name='custom-table' />
             </div>
         </div>
     )

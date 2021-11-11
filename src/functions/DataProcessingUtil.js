@@ -9,8 +9,7 @@ export default class DataProcessingUtil {
      * Function to process the trust information stored by the @module ClientixAPI [MY_FICO]{@link http://oxygen.alenet.com/clx56dev/apirest.php?classname=MY_FICO} endpoint in the user's local storage.
      * @returns An HTML table with the extracted trust information from the user's local storage
      */
-    populateTable() {
-
+    populateTrusts() {
         //obtain trust infromation from user's local storage and process to json. propArray contains all trustProperties.
         let myTrusts = sessionStorage.getItem('myTrusts');
         let trustsObj = JSON.parse(myTrusts);
@@ -32,7 +31,7 @@ export default class DataProcessingUtil {
             let dateString = `${year}-${month}-${day}`;
             let contractNo = this.removeUglyChars(elem[2].contents);
             let contractName = this.removeUglyChars(this.toTitleCase(elem[4].contents));
-            let ficoType = elem[7].contents
+            let ficoType = this.removeUglyChars(this.toTitleCase(elem[7].contents));
             return {
                 "trust": {
                     contract_no: contractNo,
@@ -43,14 +42,13 @@ export default class DataProcessingUtil {
             }
         })
 
-
-        let filtered = trustInfo.filter((trust, index, self) => (
+        let filteredInfo = trustInfo.filter((trust, index, self) => (
             index === self.findIndex((t) => (
-                t.trust.contract_no === trust.trust.contract_no && t.trust.contract_name === trust.trust.contract_name
+                trust.trust.fico_type !== "" && t.trust.contract_no === trust.trust.contract_no && t.trust.contract_name === trust.trust.contract_name
             ))
         ))
 
-        return filtered;
+        return filteredInfo;
     }
 
     /**
@@ -64,39 +62,36 @@ export default class DataProcessingUtil {
         if (!transactionObj[0].objects) {
             return null;
         }
-        let transactionProperties = transactionObj.map(transaction => {
-            return transaction.objects.map(elem => {
-                return elem.objects.map(obj => {
-                    return obj;
-                });
-            })
-        });
-
-        let propArray = transactionProperties[0];
-
+        let transactionArray = transactionObj[0].objects.map(obj => { return obj.objects } );
         let dollarUs = Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
-        });
-
-        /*ARRAY SETUP: 0=ID, 1=IDCODE , 3=EFFTDATE  5=REVERSAL_PEND 6=TRANSTBL_CODE
-                        7=CURRENCY_CODE 8=TRANS_AMT 9=TAXABLE_AMT 10=TAX_AMT 11=TOTAL_AMT 12=EXCHANGE_RT 13=BASE_TRANS_AMT
-                        14=CONTRACT_NAME 15=DISBURSEMENT_TYPE 16=VOID 17=CHECK_NO 18=CHECK_PRINT_DATI 19=CHECK_PRINT_BY */
-        let transInfo = propArray.map((elem, index) => {
-            let status = elem[4].contents
-            let ammount = dollarUs.format(parseFloat(elem[8].contents))
-            let name = this.toTitleCase(elem[2].contents)
-            let contract = this.toTitleCase(elem[14].contents)
-            return (
-                <tr key={index}>
-                    <td className='trans-status' key="{elem[4]}">{status}</td>
-                    <td className='trans-ammount' key="{elem[8]}">{ammount}</td>
-                    <td className='trans-name' key="{elem[2]}">{name}</td>
-                    <td className='trans-contract' key="{elem[14]}">{contract}</td>
-                </tr>
-            )
         })
-        return transInfo;
+        /*
+        ARRAY SETUP: 0=ID, 1=IDCODE , 3=EFFTDATE, 4=STATUS  5=REVERSAL_PEND 6=TRANSTBL_CODE
+        7=CURRENCY_CODE 8=TRANS_AMT 9=TAXABLE_AMT 10=TAX_AMT 11=TOTAL_AMT 12=EXCHANGE_RT 13=BASE_TRANS_AMT
+        14=CONTRACT_NAME 15=DISBURSEMENT_TYPE 16=VOID 17=CHECK_NO 18=CHECK_PRINT_DATI 19=CHECK_PRINT_BY 
+        */
+        let transactionInfo = transactionArray.map(elem => {
+            let status = this.removeUglyChars(this.toTitleCase(elem[4].contents));
+            let amt = dollarUs.format(parseFloat(elem[11].contents));
+            let contract = this.removeUglyChars(this.toTitleCase(elem[14].contents))
+            let name = this.removeUglyChars(this.toTitleCase(elem[2].contents))
+            return {
+                "transaction" : {
+                    status : status,
+                    ammount : amt,
+                    contract : contract,
+                    name : name
+                }
+            }
+        })
+        let filteredInfo = transactionInfo.filter((transaction, index, self) => (
+            index === self.findIndex((t) => (
+                t.transaction.contract === transaction.transaction.contract && t.transaction.name === transaction.transaction.name
+            ))
+        ))
+        return filteredInfo;
     }
 
     populateAccounts() {

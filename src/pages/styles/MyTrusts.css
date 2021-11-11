@@ -5,7 +5,6 @@
    background: black;
 }
 
-
 .my-trusts-container {
     width: 80vw;
     height: 90vh;
@@ -38,10 +37,6 @@
         z-index: -999; 
         margin: 8vh 0 0 0;
         text-align: center;
-    }
-
-    .my-trusts-table {
-        height: 100%;
     }
 
     .my-trusts-title {
