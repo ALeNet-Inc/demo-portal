@@ -14,6 +14,9 @@ import MyTransactions from './pages/MyTransactions';
 import ServiceRequests from './pages/ServiceRequests';
 import MyAccounts from './pages/MyAccounts';
 import LoginError from './pages/LoginError';
+import MyAccountsError from './pages/MyAccountsError';
+import MyTransactionsError from './pages/MyTransactionsError';
+import MyTrustsError from './pages/MyTrustsError';
 
 /* Main App component where everything is routed */
 
@@ -35,6 +38,9 @@ function App() {
           <Route path='/service-request' component={ServiceRequests} />
           <Route path='/my-accounts' component={MyAccounts} />
           <Route path='/login-error' component={LoginError} />
+          <Route path='/accounts-error' component={MyAccountsError} />
+          <Route path='/trusts-error' component={MyTrustsError} />
+          <Route path='/transactions-error' component={MyTransactionsError} />
         </Switch>
       </Router>
     </>

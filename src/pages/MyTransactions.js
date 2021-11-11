@@ -3,6 +3,7 @@ import './styles/MyTransactions.css'
 import { useTranslation } from 'react-i18next';
 import DataProcessingUtil from '../functions/DataProcessingUtil';
 import Sidebar from '../components/SideMenu'
+import { useHistory } from 'react-router';
 
 /* A page with all trust banking information for a user */
 
@@ -11,8 +12,13 @@ function MyTransactions() {
     //Populate HTML table with Trust information
     const dataProcessor = new DataProcessingUtil();
     const mytransactions = dataProcessor.populateTransactions();
+    const history = useHistory();
 
     const { t } = useTranslation(); //react-i18-next
+
+    if(mytransactions === null) {
+        history.push('/transactions-error');
+    }
 
     return (
         <div className='mytransactions'>

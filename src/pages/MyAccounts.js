@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { useHistory } from 'react-router'
 import SideMenu from '../components/SideMenu'
 import DataProcessingUtil from '../functions/DataProcessingUtil'
 import './styles/MyAccounts.css'
@@ -10,6 +11,11 @@ function MyAccounts() {
 
     const dataUtil = new DataProcessingUtil();
     const myAccounts = dataUtil.populateAccounts();
+    const history = useHistory();
+
+    if(myAccounts === null) {
+        history.push('/accounts-error');
+    }
 
     return (
         <div className='myaccounts'>

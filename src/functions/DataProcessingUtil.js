@@ -14,6 +14,9 @@ export default class DataProcessingUtil {
         //obtain trust infromation from user's local storage and process to json. propArray contains all trustProperties.
         let myTrusts = sessionStorage.getItem('myTrusts');
         let trustsObj = JSON.parse(myTrusts);
+        if(!trustsObj[0].objects) {
+            return null;
+        }
         let trustsProperties = trustsObj.map(trust => {
             return trust.objects.map(elem => {
                 return elem.objects.map(obj => {
@@ -51,6 +54,9 @@ export default class DataProcessingUtil {
         //obtain transaction infromation from user's local storage and process to json. propArray contains all trustProperties.
         let myTransactions = sessionStorage.getItem('myTransactions');
         let transactionObj = JSON.parse(myTransactions);
+        if (!transactionObj[0].objects) {
+            return null;
+        }
         let transactionProperties = transactionObj.map(transaction => {
             return transaction.objects.map(elem => {
                 return elem.objects.map(obj => {
@@ -88,8 +94,11 @@ export default class DataProcessingUtil {
 
     populateAccounts() {
         //obtain transaction infromation from user's local storage and process to json. propArray contains all trustProperties.
-        let myAccounts = sessionStorage.getItem('myAccounts');
+        let myAccounts;
         let accountObj = JSON.parse(myAccounts);
+        if (!accountObj[0].objects) {
+            return null;
+        }
         let accountProperties = accountObj.map(account => {
             return account.objects.map(elem => {
                 return elem.objects.map(obj => {
