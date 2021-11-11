@@ -13,7 +13,7 @@ function MyAccounts() {
     const myAccounts = dataUtil.populateAccounts();
     const history = useHistory();
 
-    if(myAccounts === null) {
+    if (myAccounts === null) {
         history.push('/accounts-error');
     }
 

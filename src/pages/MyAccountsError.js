@@ -3,7 +3,7 @@ import ErrorPage from '../components/ErrorPage'
 
 function MyAccountsError() {
   return (
-    <ErrorPage previousPage='/account' message='We found no trusts for your account' />
+    <ErrorPage previousPage='/account' message='We found no products   for your account' />
   )
 }
 

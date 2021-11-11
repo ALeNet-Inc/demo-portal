@@ -94,12 +94,13 @@ export default class DataProcessingUtil {
 
     populateAccounts() {
         //obtain transaction infromation from user's local storage and process to json. propArray contains all trustProperties.
-        let myAccounts;
-        let accountObj = JSON.parse(myAccounts);
-        if (!accountObj[0].objects) {
+        let myAccounts = sessionStorage.getItem('myAccounts');
+        let accountObjArray = JSON.parse(myAccounts);
+        if (!accountObjArray[0].objects) {
             return null;
         }
-        let accountProperties = accountObj.map(account => {
+        
+        let accountProperties = accountObjArray.map(account => {
             return account.objects.map(elem => {
                 return elem.objects.map(obj => {
                     return obj;
@@ -108,8 +109,6 @@ export default class DataProcessingUtil {
         });
 
         let propArray = accountProperties[0];
-        console.log(propArray);
-
         let dollarUs = Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
