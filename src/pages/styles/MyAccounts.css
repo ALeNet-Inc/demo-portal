@@ -4,14 +4,16 @@
     position: absolute;
     z-index: -9999;
     background: black;
+    background: rgb(0, 0, 0);
+    width: 100vw;
  }
  
  
  .my-accounts-container {
-     width: 80vw;
+     width: 75%;
      height: 90vh;
      background: rgb(0, 0, 0);
-     margin: 10vh 0 0 21vw;
+     margin: 10vh 5vw 0 20vw;
      position: relative;
      overflow-y: scroll;
      overflow-x: scroll;

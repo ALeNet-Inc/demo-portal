@@ -1,0 +1,132 @@
+.dropdown-table-container {
+  width: 100%;
+}
+
+.dropdown-table {
+  margin: 10px 10px 0 0;
+  list-style: none;
+  display: table;
+  width: 100%;
+}
+
+.dropdown-table-headers {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.dropdown-table-headers h3 {
+  font-size: 1.2em;
+  margin: 10px 70px 0 70px;
+  color: whitesmoke;
+}
+
+.dropdown-table-item {
+  width: 100%;
+  padding: 0.3em;
+}
+
+.dropdown-table-row:hover {
+  filter: brightness(1.4);
+}
+
+.dropdown-table-row {
+  display: flex;
+  width: 100%;
+  padding: 0.5rem;
+  background-color: rgba(77, 80, 80, 0.863);
+  border-radius: 8px;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.row-label-group {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.dropdown-table-item-label {
+  font-size: 1em;
+  color: whitesmoke;
+  margin-left: 30px;
+}
+
+.caret {
+  color: white;
+  width: 5%;
+}
+
+.dropdown-table-menu {
+  background-color: rgba(124, 124, 124, 0.863);
+  position: sticky;
+  margin-left: 5px;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.dropdown-table-menu-left-col {
+  width: 50%;
+  text-align: center;
+}
+.dropdown-table-menu-right-col {
+  width: 50%;
+  text-align: center;
+}
+
+.dropdown-table-menu-items {
+  color: white;
+  list-style: none;
+  line-height: 1.5em;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.dropdown-table-menu-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-table-text {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.dropdown-table-menu-item strong {
+  color: black;
+}
+
+.dropdown-btn-container {
+  margin-top: 25px;
+  width: 100%;
+}
+
+.dropdown-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem;
+  background-color: rgb(44, 43, 34);
+  font-weight: 500;
+  font-size: 1em;
+  color: whitesmoke;
+  width: 100%;
+}
+
+.dropdown-btn:hover {
+  filter: brightness(1.4) ;
+  cursor: pointer;
+}
+
+.plus-icon {
+  margin-bottom: -3px;
+  font-size: 1.2em;
+  margin-left: 5px;
+}
+

@@ -62,7 +62,7 @@ export default class DataProcessingUtil {
         if (!transactionObj[0].objects) {
             return null;
         }
-        let transactionArray = transactionObj[0].objects.map(obj => { return obj.objects } );
+        let transactionArray = transactionObj[0].objects.map(obj => { return obj.objects });
         let dollarUs = Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
@@ -78,11 +78,11 @@ export default class DataProcessingUtil {
             let contract = this.removeUglyChars(this.toTitleCase(elem[14].contents))
             let name = this.removeUglyChars(this.toTitleCase(elem[2].contents))
             return {
-                "transaction" : {
-                    status : status,
-                    ammount : amt,
-                    contract : contract,
-                    name : name
+                "transaction": {
+                    status: status,
+                    ammount: amt,
+                    contract: contract,
+                    name: name
                 }
             }
         })
@@ -108,25 +108,34 @@ export default class DataProcessingUtil {
             currency: 'USD',
         })
         let accountInfo = accountArray.map(elem => {
+            let company = this.removeUglyChars(this.toTitleCase(elem[0].contents));
             let accountType = this.removeUglyChars(this.toTitleCase(elem[1].contents));
             let accountNo = this.removeUglyChars(elem[4].contents);
             let balance = dollarUs.format(parseFloat(elem[7].contents));
             let intEarned = dollarUs.format(parseFloat(elem[8].contents));
+            let intPaid = dollarUs.format(parseFloat(elem[9].contents));
             return {
-                "account" : {
-                    type: accountType,
-                    account_no: accountNo,
-                    balance: balance,
-                    int_earned: intEarned
+                "account": {
+                    headers: {
+                        account_no: { label: 'Account Number', value: accountNo },
+                        balance: { label: 'Balance', value: balance },
+                    },
+                    body: [
+                        { label: 'Account Type', value: accountType },
+                        { label: 'Company', value: company },
+                        { label: 'Interest Earned', value: intEarned },
+                        { label: 'Interest Paid', value: intPaid },
+                    ]
                 }
             }
         })
 
         let filteredInfo = accountInfo.filter((acc, index, self) => (
             index === self.findIndex((t) => (
-                t.account.account_no === acc.account.account_no
+                t.account.headers.account_no.value === acc.account.headers.account_no.value
             ))
         ))
+        console.log(accountArray)
 
         return filteredInfo;
     }
