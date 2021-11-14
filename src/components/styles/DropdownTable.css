@@ -68,6 +68,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  animation: slideDown .3s ease;
 }
 
 .dropdown-table-menu-left-col {
@@ -97,10 +98,12 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  animation: slideRight 0.4s ease;
 }
 
 .expansion-container {
   margin: 5px 10px;
+  animation: slideLeft 0.4s ease;
 }
 
 .expansion {
@@ -146,7 +149,7 @@
   font-size: 1em;
   color: whitesmoke;
   display: inline-flex;
-  width: 20%;
+  width: 30%;
   white-space: nowrap;
   justify-content: space-evenly;
 }
@@ -159,5 +162,28 @@
 .plus-icon {
   margin-bottom: -3px;
   font-size: 1.2em;
+}
+
+@keyframes slideDown {
+  0% { opacity: 0; transform: translateY(-60%) scaleY(0%); }   
+  25% { opacity: 0.35; transform: translateY(-45%) scaleY(25%);  }   
+  50% { opacity: 0.55; transform: translateY(-25%) scaleY(50%); }   
+  75% { opacity: 0.85; transform: translateY(-10%) scaleY(75%);  }   
+  100% { opacity: 1; transform: translateY(0) scaleY(100%); }
+}
+@keyframes slideLeft {
+  0% { opacity: 0; transform: translateX(100%) }   
+  25% { opacity: 0.35; transform: translateX(75%) }   
+  50% { opacity: 0.55; transform: translateX(50%) }   
+  75% { opacity: 0.85; transform: translateX(25%) }   
+  100% { opacity: 1; transform: translateX(0) }
+}
+
+@keyframes slideRight {
+  0% { opacity: 0; transform: translateX(-100%) }   
+  25% { opacity: 0.35; transform: translateX(-75%) }   
+  50% { opacity: 0.55; transform: translateX(-50%) }   
+  75% { opacity: 0.85; transform: translateX(-25%) }   
+  100% { opacity: 1; transform: translateX(0) }
 }
 
