@@ -9,9 +9,8 @@ export default class DataProcessingUtil {
      * Function to process the trust information stored by the @module ClientixAPI [MY_FICO]{@link http://oxygen.alenet.com/clx56dev/apirest.php?classname=MY_FICO} endpoint in the user's local storage.
      * @returns An HTML table with the extracted trust information from the user's local storage
      */
-    populateTrusts() {
+    populateTrusts(myTrusts) {
         //obtain trust infromation from user's local storage and process to json. propArray contains all trustProperties.
-        let myTrusts = sessionStorage.getItem('myTrusts');
         let trustsObj = JSON.parse(myTrusts);
         if (!trustsObj[0].objects) {
             return null;
@@ -34,10 +33,14 @@ export default class DataProcessingUtil {
             let ficoType = this.removeUglyChars(this.toTitleCase(elem[7].contents));
             return {
                 "trust": {
-                    contract_no: contractNo,
-                    contract_name: contractName,
-                    fico_type: ficoType,
-                    date: dateString
+                    headers: [
+                        { label: 'Contract Number', value: contractNo },
+                        { label: 'Start Date', value: dateString }
+                    ],
+                    body: [
+                        { label: 'Contract Name', value: contractName },
+                        { label: 'Trust Type', value: ficoType }
+                    ],
                 }
             }
         })
@@ -55,9 +58,8 @@ export default class DataProcessingUtil {
 * Function to process the trust information stored by the @module ClientixAPI [MY_TRANSACT]{@link http://oxygen.alenet.com/clx56dev/apirest.php?classname=MY_TRANSACT} endpoint in the user's local storage.
 * @returns An HTML table with the extracted trust information from the user's local storage
 */
-    populateTransactions() {
+    populateTransactions(myTransactions) {
         //obtain transaction infromation from user's local storage and process to json. propArray contains all trustProperties.
-        let myTransactions = sessionStorage.getItem('myTransactions');
         let transactionObj = JSON.parse(myTransactions);
         if (!transactionObj[0].objects) {
             return null;
@@ -79,10 +81,14 @@ export default class DataProcessingUtil {
             let name = this.removeUglyChars(this.toTitleCase(elem[2].contents))
             return {
                 "transaction": {
-                    status: status,
-                    ammount: amt,
-                    contract: contract,
-                    name: name
+                    header: {
+                        amount: { label: 'Ammount', value: amt },
+                        contract: { lael: 'Contract Name', value: contract }
+                    },
+                    body: [
+                        { label: 'Status', value: status },
+                        { label: 'Transaction Name', value: name }
+                    ]
                 }
             }
         })
@@ -95,9 +101,8 @@ export default class DataProcessingUtil {
         return filteredInfo;
     }
 
-    populateAccounts() {
+    populateAccounts(myAccounts) {
         //obtain transaction infromation from user's local storage and process to json. propArray contains all trustProperties.
-        let myAccounts = sessionStorage.getItem('myAccounts');
         let accountObjArray = JSON.parse(myAccounts);
         if (!accountObjArray[0].objects) {
             return null;
@@ -107,6 +112,7 @@ export default class DataProcessingUtil {
             style: 'currency',
             currency: 'USD',
         })
+
         let accountInfo = accountArray.map(elem => {
             let company = this.removeUglyChars(this.toTitleCase(elem[0].contents));
             let accountType = this.removeUglyChars(this.toTitleCase(elem[1].contents));
@@ -114,6 +120,7 @@ export default class DataProcessingUtil {
             let balance = dollarUs.format(parseFloat(elem[7].contents));
             let intEarned = dollarUs.format(parseFloat(elem[8].contents));
             let intPaid = dollarUs.format(parseFloat(elem[9].contents));
+            let contract = this.removeUglyChars(this.toTitleCase(elem[5].contents));
             return {
                 "account": {
                     headers: {
@@ -125,7 +132,10 @@ export default class DataProcessingUtil {
                         { label: 'Company', value: company },
                         { label: 'Interest Earned', value: intEarned },
                         { label: 'Interest Paid', value: intPaid },
-                    ]
+                    ],
+                    expansion: {
+                        trust: {label: 'Linked Contract', value: contract}
+                    }
                 }
             }
         })
@@ -135,9 +145,11 @@ export default class DataProcessingUtil {
                 t.account.headers.account_no.value === acc.account.headers.account_no.value
             ))
         ))
-        console.log(accountArray)
-
         return filteredInfo;
+    }
+
+    findContract(contractName) {
+        let transactionContracts = JSON.parse(sessionStorage.getItem('myTransactions'));
     }
 
     /**

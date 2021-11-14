@@ -11,7 +11,7 @@ function MyAccounts() {
     const { t } = useTranslation();
 
     const dataUtil = new DataProcessingUtil();
-    const myAccounts = dataUtil.populateAccounts();
+    const myAccounts = JSON.parse(sessionStorage.getItem('myAccounts'));
     const history = useHistory();
 
     if (myAccounts === null) {
@@ -29,12 +29,17 @@ function MyAccounts() {
                     {
                         myAccounts ? (
                             myAccounts.map(acc => {
+                                dataUtil.findContract(acc.account.expansion.trust.value)
                                 return (
                                     <DropdownTableItem
                                         key={acc.account.headers.account_no.value}
                                         label1={acc.account.headers.account_no.value}
                                         label2={acc.account.headers.balance.value}>
-                                        <DropdownTableMenu textItems={acc.account.body} />
+                                        <DropdownTableMenu textItems={acc.account.body} button='Linked Contract'>
+                                            <div className='trust-expansion'>
+                                                <h2 className='expansion-header'>Linked Trusts</h2>
+                                            </div>
+                                        </DropdownTableMenu>
                                     </DropdownTableItem>
                                 );
                             })

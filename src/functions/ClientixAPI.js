@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie'
+import DataProcessingUtil from './DataProcessingUtil';
 /* A class to use the Clientix API endpoints */
 
 export default class ClientixAPI {
@@ -67,6 +68,7 @@ export default class ClientixAPI {
      * @returns: Sets trusts to the user's local storage to be retrieved and processed.
      */
     async getUserTrusts() {
+        let dataUtil = new DataProcessingUtil();
         this.sessionToken = Cookies.get("session_token");
         this.language = Cookies.get("i18-next")
         this.requestOptions.method = this.method.get; // append method of call to request options
@@ -75,7 +77,7 @@ export default class ClientixAPI {
             .then(result => {
                 let myTrustsJson = JSON.stringify(result)
                 if (myTrustsJson != null) {
-                    sessionStorage.setItem('myTrusts', myTrustsJson);
+                    sessionStorage.setItem('myTrusts', JSON.stringify(dataUtil.populateTrusts(myTrustsJson)));
                 }
             })
             .catch(error => console.log('error', error))
@@ -87,6 +89,7 @@ export default class ClientixAPI {
      * @returns: Sets trusts to the user's local storage to be retrieved and processed.
      */
      async getUserTransactions(hideLoader) {
+        let dataUtil = new DataProcessingUtil();
         this.sessionToken = Cookies.get("session_token");
         this.requestOptions.method = this.method.get; // append method of call to request options
         await fetch("https://eportal.clientix.com/clx56dev/apirest.php?classname=MY_TRANSACT&CLX_SESSION_ID=" + this.sessionToken, this.requestOptions)
@@ -94,7 +97,7 @@ export default class ClientixAPI {
             .then(result => {
                 let myTransactionsJson = JSON.stringify(result)
                 if (myTransactionsJson != null) {
-                    sessionStorage.setItem('myTransactions', myTransactionsJson);
+                    sessionStorage.setItem('myTransactions', JSON.parse(dataUtil.populateTransactions(myTransactionsJson)));
                     hideLoader()
                 }
             })
@@ -102,6 +105,7 @@ export default class ClientixAPI {
     }
 
     async getUserAccounts() {
+        let dataUtil = new DataProcessingUtil();
         this.sessionToken = Cookies.get("session_token");
         this.requestOptions.method = this.method.get;
         await fetch("https://eportal.clientix.com/clx56dev/apirest.php?classname=MY_PRODUCT&CLX_SESSION_ID=" + this.sessionToken, this.requestOptions)
@@ -109,7 +113,7 @@ export default class ClientixAPI {
             .then(result => {
                 let myAccountsJson = JSON.stringify(result)
                 if(myAccountsJson != null) {
-                    sessionStorage.setItem('myAccounts', myAccountsJson);
+                    sessionStorage.setItem('myAccounts', JSON.stringify(dataUtil.populateAccounts(myAccountsJson)))
                 } 
             })
     }

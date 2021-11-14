@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 import './styles/MyTrusts.css'
 import { useTranslation } from 'react-i18next';
-import DataProcessingUtil from '../functions/DataProcessingUtil';
 import Sidebar from '../components/SideMenu'
 import Table from '../components/Table';
 import { useHistory } from 'react-router';
@@ -11,8 +10,7 @@ import { useHistory } from 'react-router';
 function MyTrusts() {
 
     //Populate HTML table with Trust information
-    const dataProcessor = new DataProcessingUtil();
-    const myTrusts = dataProcessor.populateTrusts();
+    const myTrusts = JSON.parse(sessionStorage.getItem('myTrusts'))
     const history = useHistory();
 
     if (myTrusts === null) {
