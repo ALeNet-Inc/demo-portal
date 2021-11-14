@@ -29,15 +29,49 @@ function MyAccounts() {
                     {
                         myAccounts ? (
                             myAccounts.map(acc => {
-                                dataUtil.findContract(acc.account.expansion.trust.value)
+                                let contract = dataUtil.findContract(acc.account.expansion.trust.value);
                                 return (
                                     <DropdownTableItem
                                         key={acc.account.headers.account_no.value}
                                         label1={acc.account.headers.account_no.value}
                                         label2={acc.account.headers.balance.value}>
-                                        <DropdownTableMenu textItems={acc.account.body} button='Linked Contract'>
-                                            <div className='trust-expansion'>
-                                                <h2 className='expansion-header'>Linked Trusts</h2>
+                                        <DropdownTableMenu textItems={acc.account.body} button expansionOpen='Account' expansionClosed='Linked Contract'>
+                                            <div className='expansion-container'>
+                                                <h2 className='expansion-header'>Linked Trust</h2>
+                                                {
+                                                    contract ? (
+                                                        <div className='expansion'>
+                                                            <div className='expansion-fields'>
+                                                                <label className='dropdown-table-item-label'>
+                                                                    <strong>
+                                                                        {contract.trust.headers.contract_no.label +
+                                                                            ': '}
+                                                                    </strong> {contract.trust.headers.contract_no.value}
+                                                                </label>
+                                                                <label className='dropdown-table-item-label'>
+                                                                    <strong>
+                                                                        {contract.trust.headers.date.label +
+                                                                            ': '}
+                                                                    </strong>
+                                                                    {contract.trust.headers.date.value}
+                                                                </label>
+                                                            </div>
+                                                            <div className='expansion-fields'>
+                                                                {
+                                                                    contract.trust.body.map(elem => {
+                                                                        return (
+                                                                            <label className='dropdown-table-item-label'>
+                                                                               <strong>{elem.label + ': ' }</strong>  {elem.value}
+                                                                            </label>
+                                                                        );
+                                                                    })
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    ) : (
+                                                        <h2 className='expansion-header'>No Linked Contracts Found</h2>
+                                                    )
+                                                }
                                             </div>
                                         </DropdownTableMenu>
                                     </DropdownTableItem>
@@ -49,7 +83,7 @@ function MyAccounts() {
                     }
                 </DropdownTable>
             </div>
-        </div>
+        </div >
     )
 }
 

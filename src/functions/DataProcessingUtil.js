@@ -33,10 +33,10 @@ export default class DataProcessingUtil {
             let ficoType = this.removeUglyChars(this.toTitleCase(elem[7].contents));
             return {
                 "trust": {
-                    headers: [
-                        { label: 'Contract Number', value: contractNo },
-                        { label: 'Start Date', value: dateString }
-                    ],
+                    headers: {
+                        contract_no : { label: 'Contract Number', value: contractNo },
+                        date: { label: 'Start Date', value: dateString }
+                    },
                     body: [
                         { label: 'Contract Name', value: contractName },
                         { label: 'Trust Type', value: ficoType }
@@ -47,7 +47,9 @@ export default class DataProcessingUtil {
 
         let filteredInfo = trustInfo.filter((trust, index, self) => (
             index === self.findIndex((t) => (
-                trust.trust.fico_type !== "" && t.trust.contract_no === trust.trust.contract_no && t.trust.contract_name === trust.trust.contract_name
+                trust.trust.body[1].value !== "" && 
+                t.trust.headers.contract_no.value === trust.trust.headers.contract_no.value && 
+                t.trust.body[0].value === trust.trust.body[0].value
             ))
         ))
 
@@ -94,10 +96,10 @@ export default class DataProcessingUtil {
         })
         let filteredInfo = transactionInfo.filter((transaction, index, self) => (
             index === self.findIndex((t) => (
-                t.transaction.contract === transaction.transaction.contract && t.transaction.name === transaction.transaction.name
+                t.transaction.header.contract.value === transaction.transaction.header.contract.value && 
+                t.transaction.body[1].value === transaction.transaction.body[1].value
             ))
         ))
-        console.log(filteredInfo)
         return filteredInfo;
     }
 
@@ -149,7 +151,8 @@ export default class DataProcessingUtil {
     }
 
     findContract(contractName) {
-        let transactionContracts = JSON.parse(sessionStorage.getItem('myTransactions'));
+        let contracts = JSON.parse(sessionStorage.getItem('myTrusts'));
+        return contracts.find(contract => contract.trust.body[0].value === contractName)
     }
 
     /**

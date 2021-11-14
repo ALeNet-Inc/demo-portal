@@ -97,7 +97,7 @@ export default class ClientixAPI {
             .then(result => {
                 let myTransactionsJson = JSON.stringify(result)
                 if (myTransactionsJson != null) {
-                    sessionStorage.setItem('myTransactions', JSON.parse(dataUtil.populateTransactions(myTransactionsJson)));
+                    sessionStorage.setItem('myTransactions', JSON.stringify(dataUtil.populateTransactions(myTransactionsJson)));
                     hideLoader()
                 }
             })

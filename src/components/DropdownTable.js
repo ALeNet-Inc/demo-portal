@@ -47,62 +47,74 @@ export function DropdownTableMenu(props) {
 
   return (
     <div className='dropdown-table-menu'>
-      <div className='dropdown-table-text'>
-        <div className='dropdown-table-menu-left-col'>
-          {
-            props.textItems ? (
-              props.textItems.map((textItem, index) => {
-                if (index < Math.floor(props.textItems.length / 2)) {
-                  return (
-                    <ul className='dropdown-table-menu-items' key={textItem.value}>
-                      <li className='dropdown-table-menu-item'>
-                        <strong>{textItem.label + ': '}</strong>{textItem.value}
-                      </li>
-                    </ul>
-                  );
-                } else {
-                  return null
-                }
-              })
-            ) : (
-              null
-            )
-          }
-        </div>
-        <div className='dropdown-table-menu-right-col'>
-          {
-            props.textItems ? (
-              props.textItems.map((textItem, index) => {
-                if (index >= Math.floor(props.textItems.length / 2)) {
-                  return (
-                    <ul className='dropdown-table-menu-items' key={textItem.value + ' ' + index}>
-                      <li className='dropdown-table-menu-item'>
-                        <strong>{textItem.label + ': '}</strong>{textItem.value}
-                      </li>
-                    </ul>
-                  );
-                } else {
-                  return null;
-                }
-              })
-            ) : (
-              null
-            )
-          }
-        </div>
-      </div>
+      {
+        !open ? (
+          <div className='dropdown-table-text'>
+            <div className='dropdown-table-menu-left-col'>
+              {props.textItems ? (
+                props.textItems.map((textItem, index) => {
+                  if (index < Math.floor(props.textItems.length / 2)) {
+                    return (
+                      <ul className='dropdown-table-menu-items' key={textItem.value}>
+                        <li className='dropdown-table-menu-item'>
+                          <strong>{textItem.label + ': '}</strong>{textItem.value}
+                        </li>
+                      </ul>
+                    );
+                  } else {
+                    return null
+                  }
+                })
+              ) : (
+                null
+              )
+              }
+            </div>
+            <div className='dropdown-table-menu-right-col'>
+              {
+                props.textItems ? (
+                  props.textItems.map((textItem, index) => {
+                    if (index >= Math.floor(props.textItems.length / 2)) {
+                      return (
+                        <ul className='dropdown-table-menu-items' key={textItem.value + ' ' + index}>
+                          <li className='dropdown-table-menu-item'>
+                            <strong>{textItem.label + ': '}</strong>{textItem.value}
+                          </li>
+                        </ul>
+                      );
+                    } else {
+                      return null;
+                    }
+                  })
+                ) : (
+                  null
+                )
+              }
+            </div>
+          </div>
+        ) : (
+          props.children
+        )
+      }
       {
         props.button ? (
           <div className='dropdown-btn-container'>
-            <button className='dropdown-btn' type='button' onClick={toggle}>
-              {props.button} <AiIcons.AiFillPlusCircle className='plus-icon' />
-            </button>
+            {
+              !open ? (
+                <button className='dropdown-btn' type='button' onClick={toggle}>
+                  {props.expansionClosed} <AiIcons.AiFillCaretRight className='plus-icon' />
+                </button>
+              ) : (
+                <button className='dropdown-btn' type='button' onClick={toggle}>
+                  <AiIcons.AiFillCaretLeft className='plus-icon' />{props.expansionOpen}
+                </button>
+              )
+            }
           </div>
         ) : (
           null
         )
       }
-      {open && props.children}
     </div>
   );
 }
