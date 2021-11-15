@@ -83,23 +83,24 @@ export default class DataProcessingUtil {
             let name = this.removeUglyChars(this.toTitleCase(elem[2].contents))
             return {
                 "transaction": {
-                    header: {
+                    headers: {
                         amount: { label: 'Ammount', value: amt },
-                        contract: { lael: 'Contract Name', value: contract }
+                        contract: { label: 'Transaction Name', value: name }
                     },
                     body: [
                         { label: 'Status', value: status },
-                        { label: 'Transaction Name', value: name }
+                        { label: 'Contract Name', value: contract }
                     ]
                 }
             }
         })
         let filteredInfo = transactionInfo.filter((transaction, index, self) => (
             index === self.findIndex((t) => (
-                t.transaction.header.contract.value === transaction.transaction.header.contract.value && 
+                t.transaction.headers.contract.value === transaction.transaction.headers.contract.value && 
                 t.transaction.body[1].value === transaction.transaction.body[1].value
             ))
         ))
+
         return filteredInfo;
     }
 

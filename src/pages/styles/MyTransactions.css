@@ -41,4 +41,8 @@
          margin: 8vh 0 0 0;
          text-align: center;
      }
+     
+     .my-transactions-title {
+        font-size: 3rem;
+    }
  }
