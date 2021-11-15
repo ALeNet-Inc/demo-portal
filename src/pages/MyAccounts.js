@@ -28,13 +28,15 @@ function MyAccounts() {
                 <DropdownTable headers={headers}>
                     {
                         myAccounts ? (
-                            myAccounts.map(acc => {
+                            myAccounts.map((acc, index) => {
                                 let contract = dataUtil.findContract(acc.account.expansion.trust.value);
                                 return (
                                     <DropdownTableItem
                                         key={acc.account.headers.account_no.value}
                                         label1={acc.account.headers.account_no.value}
-                                        label2={acc.account.headers.balance.value}>
+                                        label2={acc.account.headers.balance.value}
+                                        index={index}
+                                    >
                                         <DropdownTableMenu textItems={acc.account.body} button expansionOpen='Account' expansionClosed='Linked Contract'>
                                             <div className='expansion-container'>
                                                 <h2 className='expansion-header'>Linked Trust</h2>
@@ -60,7 +62,7 @@ function MyAccounts() {
                                                                 {
                                                                     contract.trust.body.map(elem => {
                                                                         return (
-                                                                            <label className='dropdown-table-item-label'>
+                                                                            <label className='dropdown-table-item-label' key={elem.value + index}>
                                                                                <strong>{elem.label + ': ' }</strong>  {elem.value}
                                                                             </label>
                                                                         );

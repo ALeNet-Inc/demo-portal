@@ -37,6 +37,7 @@
   padding: 0.5rem;
   background-color: rgba(77, 80, 80, 0.863);
   border-radius: 8px;
+  border: none;
   text-decoration: none;
   margin: 5px;
 }
@@ -187,3 +188,20 @@
   100% { opacity: 1; transform: translateX(0) }
 }
 
+@media screen and (max-width: 758px) {
+  .dropdown-btn {
+    width: max-content;
+  }
+
+  .dropdown-table-headers {
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .dropdown-table-headers h3 {
+    margin: 0;
+  }
+}

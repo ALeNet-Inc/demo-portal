@@ -155,6 +155,11 @@ export default class DataProcessingUtil {
         return contracts.find(contract => contract.trust.body[0].value === contractName)
     }
 
+    findAccount(contractName) {
+        let accounts = JSON.parse(sessionStorage.getItem('myAccounts'));
+        return accounts.find(acc => acc.account.expansion.trust.value === contractName)
+    }
+
     /**
      * Function to turn a string into "Title Casing"
      * @param {*} str the string to be processed

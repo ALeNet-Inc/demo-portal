@@ -28,13 +28,13 @@ export function DropdownTableItem(props) {
 
   return (
     <li className='dropdown-table-item'>
-      <a href='#id' className='dropdown-table-row' onClick={toggle}>
+      <button id={props.index} className='dropdown-table-row' onClick={toggle}>
         {open ? <AiIcons.AiFillCaretDown className='caret' /> : <AiIcons.AiFillCaretRight className='caret' />}
         <div className='row-label-group'>
           <label className='dropdown-table-item-label'>{props.label1}</label>
           <label className='dropdown-table-item-label'>{props.label2}</label>
         </div>
-      </a>
+      </button>
       {open && props.children}
     </li>
   );
@@ -55,7 +55,7 @@ export function DropdownTableMenu(props) {
                 props.textItems.map((textItem, index) => {
                   if (index < Math.floor(props.textItems.length / 2)) {
                     return (
-                      <ul className='dropdown-table-menu-items' key={textItem.value}>
+                      <ul className='dropdown-table-menu-items' key={textItem.value + ' ' + index}>
                         <li className='dropdown-table-menu-item'>
                           <strong>{textItem.label + ': '}</strong>{textItem.value}
                         </li>
