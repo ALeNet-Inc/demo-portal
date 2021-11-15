@@ -98,12 +98,12 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  animation: slideRight 0.4s ease;
+  animation: slideRightDropdown 0.4s ease;
 }
 
 .expansion-container {
   margin: 5px 10px;
-  animation: slideLeft 0.4s ease;
+  animation: slideLeftDropdown 0.4s ease;
 }
 
 .expansion {
@@ -171,7 +171,7 @@
   75% { opacity: 0.85; transform: translateY(-10%) scaleY(75%);  }   
   100% { opacity: 1; transform: translateY(0) scaleY(100%); }
 }
-@keyframes slideLeft {
+@keyframes slideLeftDropdown {
   0% { opacity: 0; transform: translateX(100%) }   
   25% { opacity: 0.35; transform: translateX(75%) }   
   50% { opacity: 0.55; transform: translateX(50%) }   
@@ -179,7 +179,7 @@
   100% { opacity: 1; transform: translateX(0) }
 }
 
-@keyframes slideRight {
+@keyframes slideRightDropdown {
   0% { opacity: 0; transform: translateX(-100%) }   
   25% { opacity: 0.35; transform: translateX(-75%) }   
   50% { opacity: 0.55; transform: translateX(-50%) }   
