@@ -29,18 +29,20 @@
 
 .dropdown-table-row:hover {
   filter: brightness(1.4);
+  cursor: pointer;
 }
 
 .dropdown-table-row {
   display: flex;
   width: 100%;
   padding: 0.5rem;
-  background-color: rgba(77, 80, 80, 0.863);
+  background-color: rgba(118, 119, 119, 0.863);
   border-radius: 8px;
   border: none;
   text-decoration: none;
   margin: 5px;
 }
+
 
 .row-label-group {
   display: inline-flex;
@@ -53,6 +55,7 @@
   font-size: 1em;
   color: whitesmoke;
   margin-left: 30px;
+  font-weight: 500;
 }
 
 .caret {
@@ -61,7 +64,7 @@
 }
 
 .dropdown-table-menu {
-  background-color: rgba(124, 124, 124, 0.863);
+  background-color: rgba(152, 155, 155, 0.863);
   position: sticky;
   margin-left: 5px;
   border-radius: 8px;
@@ -103,12 +106,13 @@
 }
 
 .expansion-container {
-  margin: 5px 10px;
+  margin: 5px 0;
+  width: 100%;
   animation: slideLeftDropdown 0.4s ease;
 }
 
 .expansion {
-  margin: 5px;
+  margin: 5px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -117,7 +121,8 @@
 .expansion-fields {
   display: flex;
   flex-direction: column;
-  align-items: baseline;
+  margin-left: -10px;
+  justify-content: space-evenly;
   line-height: 1.5em;
 }
 
@@ -132,6 +137,7 @@
 }
 .dropdown-table-item-label strong {
   color: black;
+  white-space: nowrap;
 }
 
 .dropdown-btn-container {
@@ -145,14 +151,14 @@
   border: none;
   border-radius: 6px;
   padding: 0.8rem;
-  background-color: rgb(44, 43, 34);
+  background-color: rgb(68, 68, 68);
   font-weight: 500;
   font-size: 1em;
   color: whitesmoke;
   display: inline-flex;
-  width: 30%;
+  width: 100%;
   white-space: nowrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .dropdown-btn:hover {
@@ -163,6 +169,8 @@
 .plus-icon {
   margin-bottom: -3px;
   font-size: 1.2em;
+  margin-right: 6px;
+  margin-left: 6px;
 }
 
 @keyframes slideDown {
@@ -190,18 +198,27 @@
 
 @media screen and (max-width: 758px) {
   .dropdown-btn {
-    width: max-content;
+    width: 100%;
   }
 
   .dropdown-table-headers {
     justify-content: space-between;
-    width: 90%;
-    margin-top: 10px;
+    width: 100%;
+    margin-top: 15px;
     font-size: 0.8rem;
     white-space: nowrap;
   }
 
   .dropdown-table-headers h3 {
     margin: 0;
+    margin-left: 30px;
+    margin-right: 10px;
+  }
+
+  .dropdown-table-item-label {
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
   }
 }
