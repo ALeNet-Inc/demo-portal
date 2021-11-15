@@ -3,18 +3,19 @@
 .mytransactions{
     position: absolute;
     z-index: -9999;
+    width: 100vw;
     background: black;
+    overflow-y: scroll;
+    overflow-x: hidden;
  }
  
  
  .my-transactions-container {
-     width: 80vw;
-     height: 90vh;
+     width: 75%;
+     height: 100%;
      background: rgb(0, 0, 0);
      margin: 10vh 0 0 21vw;
      position: relative;
-     overflow-y: scroll;
-     overflow-x: scroll;
  }
  
  .my-transactions-title {

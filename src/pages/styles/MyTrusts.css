@@ -3,10 +3,11 @@
 .mytrusts{
    position: absolute;
    background: black;
+   width: 100vw;
 }
 
 .my-trusts-container {
-    width: 80vw;
+    width: 75%;
     height: 90vh;
     background: rgb(0, 0, 0);
     margin: 10vh 0 0 21vw;
