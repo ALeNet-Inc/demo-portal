@@ -2,7 +2,6 @@ import React from 'react'
 import './styles/MyTransactions.css'
 import { useTranslation } from 'react-i18next';
 import Sidebar from '../components/SideMenu';
-import DataProcessingUtil from '../functions/DataProcessingUtil'
 import DropdownTable, { DropdownTableMenu, DropdownTableItem } from '../components/DropdownTable';
 import { useHistory } from 'react-router';
 
