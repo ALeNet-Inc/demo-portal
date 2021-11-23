@@ -29,6 +29,7 @@ function MyAccounts() {
                     {
                         myAccounts ? (
                             myAccounts.map((acc, index) => {
+                                const linkedTrust = dataUtil.findAccount(acc.account.body[0].value)
                                 return (
                                     <DropdownTableItem
                                         key={acc.account.headers.account_no.value}
@@ -38,6 +39,7 @@ function MyAccounts() {
                                     >
                                         <DropdownTableMenu
                                             mainMenu={acc.account.body}
+                                            rightMenu={linkedTrust ? linkedTrust.trust.body : null }
                                         />
                                     </DropdownTableItem>
                                 );

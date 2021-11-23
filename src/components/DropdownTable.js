@@ -145,9 +145,9 @@ export function DropdownTableMenu(props) {
               }
             </div>
           </div>
-        ) : activeMenu === 'left' && props.reportProblems ? (
+        ) : activeMenu === 'left' && props.leftMenu ? (
           <div className='service-request-box'>
-
+            <h2>Report a Problem: </h2>
           </div>
         ) : null
       }

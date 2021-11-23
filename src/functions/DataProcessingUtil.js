@@ -90,10 +90,11 @@ export default class DataProcessingUtil {
                     headers: {
                         amount: { label: 'Ammount', value: amt },
                         contract: { label: 'Transaction Name', value: name },
-                        status: { label: 'Status', value: status}
+                        status: { label: 'Status', value: status }
                     },
                     body: [
-                        { label: 'Contract Name', value: contract }
+                        { label: 'Contract Name', value: contract },
+                        { label: 'Transaction Name', value: name },
                     ]
                 }
             }
@@ -105,7 +106,21 @@ export default class DataProcessingUtil {
             ))
         ))
 
-        return filteredInfo;
+        let approved = filteredInfo.filter((transaction) => {
+            return transaction.transaction.headers.status.value === 'Approved';
+        })
+        let pending = filteredInfo.filter((transaction) => {
+            return transaction.transaction.headers.status.value === 'Pending Approval';
+        })
+        let rejected = filteredInfo.filter((transaction) => {
+            return transaction.transaction.headers.status.value === 'Rejected';
+        })
+
+        console.log(approved)
+        console.log(pending)
+        console.log(rejected)
+
+        return [approved, pending, rejected];
     }
 
     populateAccounts(myAccounts) {

@@ -22,6 +22,36 @@
      padding-top: 10px;
      font-weight: 200;
  }
+
+ .table-head-approved {
+     color: rgb(70, 136, 70);
+     margin-top: 3vh;
+     margin-bottom: 1vh;
+ }
+
+ .table-head-pending {
+     color: rgb(197, 185, 77);
+     margin-top: 3vh;
+     margin-bottom: 1vh;
+ }
+
+ .table-head-rejected {
+    color: rgb(206, 50, 50);
+    margin-top: 3vh;
+    margin-bottom: 1vh;
+}
+
+ .approved {
+    border-color: green;
+ }
+
+ .pending {
+    border-color: yellow;
+ }
+
+ .rejected {
+    border-color: red;
+ }
  
  
  @media screen and (max-width: 758px) {
