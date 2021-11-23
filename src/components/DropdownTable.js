@@ -42,22 +42,32 @@ export function DropdownTableItem(props) {
 
 export function DropdownTableMenu(props) {
 
-  const [open, setOpen] = useState(false);
-  const toggle = () => setOpen(!open);
+  const [activeMenu, setActiveMenu] = useState('main');
+
+  const rightButtonClick = () => {
+    if(activeMenu === 'main' && props.rightMenu) setActiveMenu('right');
+    if(activeMenu === 'left' && props.mainMenu) setActiveMenu('main');
+    return null
+  }
+  const leftButtonClick = () => {
+    if(activeMenu === 'main' && props.leftMenu) setActiveMenu('left');
+    if(activeMenu === 'right' && props.mainMenu) setActiveMenu('main');
+    return null
+  }
 
   return (
     <div className='dropdown-table-menu'>
       {
-        !open ? (
+        activeMenu === 'main' ? (
           <div className='dropdown-table-text'>
             <div className='dropdown-table-menu-left-col'>
-              {props.textItems ? (
-                props.textItems.map((textItem, index) => {
-                  if (index < Math.floor(props.textItems.length / 2)) {
+              {props.mainMenu ? (
+                props.mainMenu.map((menuItem, index) => {
+                  if (index < Math.floor(props.mainMenu.length / 2)) {
                     return (
-                      <ul className='dropdown-table-menu-items' key={textItem.value + ' ' + index}>
+                      <ul className='dropdown-table-menu-items' key={menuItem.value + ' ' + index}>
                         <li className='dropdown-table-menu-item'>
-                          <strong>{textItem.label + ': '}</strong>{textItem.value}
+                          <strong>{menuItem.label + ': '}</strong>{menuItem.value}
                         </li>
                       </ul>
                     );
@@ -72,13 +82,13 @@ export function DropdownTableMenu(props) {
             </div>
             <div className='dropdown-table-menu-right-col'>
               {
-                props.textItems ? (
-                  props.textItems.map((textItem, index) => {
-                    if (index >= Math.floor(props.textItems.length / 2)) {
+                props.mainMenu ? (
+                  props.mainMenu.map((menuItem, index) => {
+                    if (index >= Math.floor(props.mainMenu.length / 2)) {
                       return (
-                        <ul className='dropdown-table-menu-items' key={textItem.value + ' ' + index}>
+                        <ul className='dropdown-table-menu-items' key={menuItem.value + ' ' + index}>
                           <li className='dropdown-table-menu-item'>
-                            <strong>{textItem.label + ': '}</strong>{textItem.value}
+                            <strong>{menuItem.label + ': '}</strong>{menuItem.value}
                           </li>
                         </ul>
                       );
@@ -92,29 +102,59 @@ export function DropdownTableMenu(props) {
               }
             </div>
           </div>
-        ) : (
-          props.children
-        )
-      }
-      {
-        props.button ? (
-          <div className='dropdown-btn-container'>
-            {
-              !open ? (
-                <button className='dropdown-btn' type='button' onClick={toggle}>
-                  {props.expansionClosed} <AiIcons.AiFillCaretRight className='plus-icon' />
-                </button>
+        ) : activeMenu === 'right' && props.rightMenu ? (
+          <div className='dropdown-table-text'>
+            <h2 className='menu-header'>{props.rightMenuTitle}</h2>
+            <div className='dropdown-table-menu-left-col'>
+              { props.rightMenu ? (
+                props.rightMenu.map((menuItem, index) => {
+                  if (index < Math.floor(props.rightMenu.length / 2)) {
+                    return (
+                      <ul className='dropdown-table-menu-items' key={menuItem.value + ' ' + index}>
+                        <li className='dropdown-table-right-menu-item'>
+                          <strong>{menuItem.label + ': '}</strong>{menuItem.value}
+                        </li>
+                      </ul>
+                    );
+                  }
+                })
               ) : (
-                <button className='dropdown-btn' type='button' onClick={toggle}>
-                  <AiIcons.AiFillCaretLeft className='plus-icon' />{props.expansionOpen}
-                </button>
+                null
               )
-            }
+              }
+            </div>
+            <div className='dropdown-table-menu-right-col'>
+              {
+                props.rightMenu ? (
+                  props.rightMenu.map((menuItem, index) => {
+                    if (index >= Math.floor(props.rightMenu.length / 2)) {
+                      return (
+                        <ul className='dropdown-table-menu-items' key={menuItem.value + ' ' + index}>
+                          <li className='dropdown-table-right-menu-item'>
+                            <strong>{menuItem.label + ': '}</strong>{menuItem.value}
+                          </li>
+                        </ul>
+                      );
+                    } else {
+                      return null;
+                    }
+                  })
+                ) : (
+                  null
+                )
+              }
+            </div>
           </div>
-        ) : (
-          null
-        )
+        ) : activeMenu === 'left' && props.reportProblems ? (
+          <div className='service-request-box'>
+
+          </div>
+        ) : null
       }
+      <div className='btn-container'>
+        <button className='menu-btn' disabled={ (activeMenu === 'left') || (activeMenu == 'main' && !props.leftMenu) } type='button' onClick={leftButtonClick}><AiIcons.AiFillCaretLeft className='caret-btn'/></button>
+        <button className='menu-btn' disabled={ (activeMenu === 'right') || (activeMenu == 'main' && !props.rightMenu) } type='button' onClick={rightButtonClick}><AiIcons.AiFillCaretRight className='caret-btn' /></button>
+      </div>
     </div>
   );
 }

@@ -31,7 +31,8 @@ function MyTrusts() {
                     {
                         myTrusts ? (
                             myTrusts.map((t, index) => {
-                                let linkedAcc = dataUtil.findAccount(t.trust.body[0].value);
+                                const linkedAcc = dataUtil.findAccount(t.trust.body[0].value)
+                                console.log(linkedAcc)
                                 return (
                                     <DropdownTableItem
                                         key={t.trust.headers.contract_no.value + ' ' + index}
@@ -39,28 +40,11 @@ function MyTrusts() {
                                         label2={t.trust.headers.date.value}
                                         index={index}
                                     >
-                                        <DropdownTableMenu textItems={t.trust.body} button expansionOpen='Trust' expansionClosed='Linked Account'>
-                                            <div className='expansion-container'>
-                                                <h2 className='expansion-header'>Linked Accounts</h2>
-                                                {
-                                                    linkedAcc ? (
-                                                        <div className='expansion'>
-                                                            <div className='expansion-fields'>
-                                                                <label className='dropdown-table-item-label'>
-                                                                    <strong>
-                                                                        {linkedAcc.account.headers.account_no.label +
-                                                                            ': '}
-                                                                    </strong> {linkedAcc.account.headers.account_no.value}
-                                                                </label>
-                                                            </div>
-                                                        </div>
-
-                                                    ) : (
-                                                        <h2 className='expansion-header'>No Linked Accounts Found</h2>
-                                                    )
-                                                }
-                                            </div>
-                                        </DropdownTableMenu>
+                                        <DropdownTableMenu
+                                            mainMenu={t.trust.body}
+                                            rightMenu={linkedAcc ? linkedAcc.account.body : null}
+                                            rightMenuTitle='Linked Account'
+                                        />
                                     </DropdownTableItem>
                                 );
                             })

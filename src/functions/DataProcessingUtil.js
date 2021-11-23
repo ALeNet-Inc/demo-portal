@@ -31,11 +31,15 @@ export default class DataProcessingUtil {
             let contractNo = this.removeUglyChars(elem[2].contents);
             let contractName = this.removeUglyChars(this.toTitleCase(elem[4].contents));
             let ficoType = this.removeUglyChars(this.toTitleCase(elem[7].contents));
+            if(ficoType === "") {
+                ficoType ="Other";
+            }
             return {
                 "trust": {
                     headers: {
                         contract_no : { label: 'Contract Number', value: contractNo },
-                        date: { label: 'Start Date', value: dateString }
+                        date: { label: 'Start Date', value: dateString }, 
+                        contract_name: { label: 'Contract Name', value: contractName }
                     },
                     body: [
                         { label: 'Contract Name', value: contractName },
@@ -85,10 +89,10 @@ export default class DataProcessingUtil {
                 "transaction": {
                     headers: {
                         amount: { label: 'Ammount', value: amt },
-                        contract: { label: 'Transaction Name', value: name }
+                        contract: { label: 'Transaction Name', value: name },
+                        status: { label: 'Status', value: status}
                     },
                     body: [
-                        { label: 'Status', value: status },
                         { label: 'Contract Name', value: contract }
                     ]
                 }
@@ -97,7 +101,7 @@ export default class DataProcessingUtil {
         let filteredInfo = transactionInfo.filter((transaction, index, self) => (
             index === self.findIndex((t) => (
                 t.transaction.headers.contract.value === transaction.transaction.headers.contract.value && 
-                t.transaction.body[1].value === transaction.transaction.body[1].value
+                t.transaction.body[0].value === transaction.transaction.body[0].value
             ))
         ))
 
@@ -129,6 +133,7 @@ export default class DataProcessingUtil {
                     headers: {
                         account_no: { label: 'Account Number', value: accountNo },
                         balance: { label: 'Balance', value: balance },
+                        linked_trust: { label: 'Linked Trust', value: contract }
                     },
                     body: [
                         { label: 'Account Type', value: accountType },
@@ -136,9 +141,7 @@ export default class DataProcessingUtil {
                         { label: 'Interest Earned', value: intEarned },
                         { label: 'Interest Paid', value: intPaid },
                     ],
-                    expansion: {
-                        trust: {label: 'Linked Contract', value: contract}
-                    }
+                    errorLabel: 'No Linked Account Found.'
                 }
             }
         })
@@ -153,12 +156,12 @@ export default class DataProcessingUtil {
 
     findContract(contractName) {
         let contracts = JSON.parse(sessionStorage.getItem('myTrusts'));
-        return contracts.find(contract => contract.trust.body[0].value === contractName)
+        return contracts.find(contract => contract.trust.headers.contract_name.value === contractName)
     }
 
     findAccount(contractName) {
         let accounts = JSON.parse(sessionStorage.getItem('myAccounts'));
-        return accounts.find(acc => acc.account.expansion.trust.value === contractName)
+        return accounts.find(acc => acc.account.headers.linked_trust.value === contractName)
     }
 
     /**

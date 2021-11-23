@@ -29,7 +29,6 @@ function MyAccounts() {
                     {
                         myAccounts ? (
                             myAccounts.map((acc, index) => {
-                                let contract = dataUtil.findContract(acc.account.expansion.trust.value);
                                 return (
                                     <DropdownTableItem
                                         key={acc.account.headers.account_no.value}
@@ -37,45 +36,9 @@ function MyAccounts() {
                                         label2={acc.account.headers.balance.value}
                                         index={index}
                                     >
-                                        <DropdownTableMenu textItems={acc.account.body} button expansionOpen='Account' expansionClosed='Linked Contract'>
-                                            <div className='expansion-container'>
-                                                <h2 className='expansion-header'>Linked Trust</h2>
-                                                {
-                                                    contract ? (
-                                                        <div className='expansion'>
-                                                            <div className='expansion-fields'>
-                                                                <label className='dropdown-table-item-label'>
-                                                                    <strong>
-                                                                        {contract.trust.headers.contract_no.label +
-                                                                            ': '}
-                                                                    </strong> {contract.trust.headers.contract_no.value}
-                                                                </label>
-                                                                <label className='dropdown-table-item-label'>
-                                                                    <strong>
-                                                                        {contract.trust.headers.date.label +
-                                                                            ': '}
-                                                                    </strong>
-                                                                    {contract.trust.headers.date.value}
-                                                                </label>
-                                                            </div>
-                                                            <div className='expansion-fields'>
-                                                                {
-                                                                    contract.trust.body.map(elem => {
-                                                                        return (
-                                                                            <label className='dropdown-table-item-label' key={elem.value + index}>
-                                                                               <strong>{elem.label + ': ' }</strong>  {elem.value}
-                                                                            </label>
-                                                                        );
-                                                                    })
-                                                                }
-                                                            </div>
-                                                        </div>
-                                                    ) : (
-                                                        <h2 className='expansion-header'>No Linked Contracts Found</h2>
-                                                    )
-                                                }
-                                            </div>
-                                        </DropdownTableMenu>
+                                        <DropdownTableMenu
+                                            mainMenu={acc.account.body}
+                                        />
                                     </DropdownTableItem>
                                 );
                             })
