@@ -22,13 +22,27 @@ export default function DropdownTable(props) {
 }
 
 export function DropdownTableItem(props) {
+  let color1, color2;
+
+  if (props.styles && props.styles === 'approved') {
+    color1 = 'green'
+    color2 = 'rgba(103, 158, 78, 0.74)'
+  }
+  if (props.styles && props.styles === 'pending') {
+    color1 = 'rgb(235, 203, 23)'
+    color2 = 'rgba(206, 165, 33, 0.74)'
+  }
+  if (props.styles && props.styles === 'rejected') {
+    color1 = 'red'
+    color2 = 'rgba(212, 44, 44, 0.74)'
+  }
 
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
 
   return (
     <li className='dropdown-table-item'>
-      <button id={props.index} className='dropdown-table-row' onClick={toggle}>
+      <button id={props.index} className='dropdown-table-row' onClick={toggle} style={{ backgroundColor: color2 }}>
         {open ? <AiIcons.AiFillCaretDown className='caret' /> : <AiIcons.AiFillCaretRight className='caret' />}
         <div className='row-label-group'>
           <label className='dropdown-table-item-label'>{props.label1}</label>
@@ -41,22 +55,37 @@ export function DropdownTableItem(props) {
 }
 
 export function DropdownTableMenu(props) {
+  let color1, color2;
+
+  if (props.styles && props.styles === 'approved') {
+    color1 = 'rgb(10, 100, 5)'
+    color2 = 'rgba(103, 158, 78, 0.74)'
+  }
+  if (props.styles && props.styles === 'pending') {
+    color1 = 'rgb(235, 203, 23)'
+    color2 = 'rgba(206, 165, 33, 0.74)'
+  }
+  if (props.styles && props.styles === 'rejected') {
+    color1 = 'red'
+    color2 = 'rgba(212, 44, 44, 0.74)'
+  }
+
 
   const [activeMenu, setActiveMenu] = useState('main');
 
   const rightButtonClick = () => {
-    if(activeMenu === 'main' && props.rightMenu) setActiveMenu('right');
-    if(activeMenu === 'left' && props.mainMenu) setActiveMenu('main');
+    if (activeMenu === 'main' && props.rightMenu) setActiveMenu('right');
+    if (activeMenu === 'left' && props.mainMenu) setActiveMenu('main');
     return null
   }
   const leftButtonClick = () => {
-    if(activeMenu === 'main' && props.leftMenu) setActiveMenu('left');
-    if(activeMenu === 'right' && props.mainMenu) setActiveMenu('main');
+    if (activeMenu === 'main' && props.leftMenu) setActiveMenu('left');
+    if (activeMenu === 'right' && props.mainMenu) setActiveMenu('main');
     return null
   }
 
   return (
-    <div className='dropdown-table-menu'>
+    <div className='dropdown-table-menu' style={{ backgroundColor: color2 }}>
       {
         activeMenu === 'main' ? (
           <div className='dropdown-table-text'>
@@ -106,7 +135,7 @@ export function DropdownTableMenu(props) {
           <div className='dropdown-table-text'>
             <h2 className='menu-header'>{props.rightMenuTitle}</h2>
             <div className='dropdown-table-menu-left-col'>
-              { props.rightMenu ? (
+              {props.rightMenu ? (
                 props.rightMenu.map((menuItem, index) => {
                   if (index < Math.floor(props.rightMenu.length / 2)) {
                     return (
@@ -153,8 +182,24 @@ export function DropdownTableMenu(props) {
         ) : null
       }
       <div className='btn-container'>
-        <button className='menu-btn' disabled={ (activeMenu === 'left') || (activeMenu === 'main' && !props.leftMenu) } type='button' onClick={leftButtonClick}><AiIcons.AiFillCaretLeft className='caret-btn'/></button>
-        <button className='menu-btn' disabled={ (activeMenu === 'right') || (activeMenu === 'main' && !props.rightMenu) } type='button' onClick={rightButtonClick}><AiIcons.AiFillCaretRight className='caret-btn' /></button>
+        <button
+          className='menu-btn'
+          disabled={(activeMenu === 'left') || (activeMenu === 'main' && !props.leftMenu)}
+          type='button'
+          onClick={leftButtonClick}
+          style={{ backgroundColor: color1 }}
+        >
+          <AiIcons.AiFillCaretLeft className='caret-btn' />
+        </button>
+        <button
+          className='menu-btn'
+          disabled={(activeMenu === 'right') || (activeMenu === 'main' && !props.rightMenu)}
+          type='button'
+          onClick={rightButtonClick}
+          style={{ backgroundColor: color1 }}
+        >
+          <AiIcons.AiFillCaretRight className='caret-btn' />
+        </button>
       </div>
     </div>
   );

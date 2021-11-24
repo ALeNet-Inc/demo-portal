@@ -6,7 +6,6 @@ import DropdownTable, { DropdownTableMenu, DropdownTableItem } from '../componen
 import { useHistory } from 'react-router';
 import * as AiIcons from 'react-icons/ai'
 import * as FaIcons from 'react-icons/fa'
-import * as MdIcons from 'react-icons/md'
 import DropdownElement from '../components/DropdownElement';
 
 /* A page with all trust banking information for a user */
@@ -23,9 +22,9 @@ function MyTransactions() {
         history.push('/transactions-error');
     }
     const headers = [t('name'), t('transaction-amt')];
-    const approvalIcon = <AiIcons.AiFillCheckCircle />
-    const rejectedIcon = <FaIcons.FaTimesCircle />
-    const pendingIcon = <AiIcons.AiFillClockCircle />
+    const approvalIcon = <AiIcons.AiFillCheckCircle style={{color: 'green'}} />
+    const rejectedIcon = <FaIcons.FaTimesCircle style={{color: 'red'}} />
+    const pendingIcon = <AiIcons.AiFillClockCircle style={{color: 'gold'}} />
 
 
     return (
@@ -33,8 +32,8 @@ function MyTransactions() {
             <Sidebar />
             <div className='my-transactions-container'>
                 <h1 className='my-transactions-title'>{t('my-transactions')}</h1>
-                <DropdownElement icon={approvalIcon} header='Approved' styles='Approved'>
-                    <DropdownTable headers={headers} styles='approved'>
+                <DropdownElement icon={approvalIcon} header='Approved'>
+                    <DropdownTable headers={headers}>
                         {
                             mytransactions[0] ? (
                                 mytransactions[0].map((trans, index) => {
@@ -44,9 +43,9 @@ function MyTransactions() {
                                             label1={trans.transaction.headers.contract.value}
                                             label2={trans.transaction.headers.amount.value}
                                             index={index}
+                                            styles='approved'
                                         >
-                                            <DropdownTableMenu mainMenu={trans.transaction.body} leftMenu>
-                                            </DropdownTableMenu>
+                                            <DropdownTableMenu styles='approved' mainMenu={trans.transaction.body} leftMenu />
                                         </DropdownTableItem>
                                     );
                                 })
@@ -56,8 +55,8 @@ function MyTransactions() {
                         }
                     </DropdownTable>
                 </DropdownElement>
-                <DropdownElement icon={pendingIcon}  header='Pending' styles='Pending'>
-                    <DropdownTable headers={headers} styles='pending'>
+                <DropdownElement icon={pendingIcon}  header='Pending'>
+                    <DropdownTable headers={headers}>
                         {
                             mytransactions[1] ? (
                                 mytransactions[1].map((trans, index) => {
@@ -67,9 +66,9 @@ function MyTransactions() {
                                             label1={trans.transaction.headers.contract.value}
                                             label2={trans.transaction.headers.amount.value}
                                             index={index}
+                                            styles='pending'
                                         >
-                                            <DropdownTableMenu mainMenu={trans.transaction.body} leftMenu>
-                                            </DropdownTableMenu>
+                                            <DropdownTableMenu styles='pending' mainMenu={trans.transaction.body} leftMenu />
                                         </DropdownTableItem>
                                     );
                                 })
@@ -79,8 +78,8 @@ function MyTransactions() {
                         }
                     </DropdownTable>
                 </DropdownElement>
-                <DropdownElement icon={rejectedIcon}  header='Rejected' styles='Rejected'>
-                    <DropdownTable headers={headers} styles='rejected'>
+                <DropdownElement icon={rejectedIcon}  header='Rejected'>
+                    <DropdownTable headers={headers}>
                         {
                             mytransactions[2] ? (
                                 mytransactions[2].map((trans, index) => {
@@ -90,9 +89,9 @@ function MyTransactions() {
                                             label1={trans.transaction.headers.contract.value}
                                             label2={trans.transaction.headers.amount.value}
                                             index={index}
+                                            styles='rejected'
                                         >
-                                            <DropdownTableMenu mainMenu={trans.transaction.body} leftMenu>
-                                            </DropdownTableMenu>
+                                            <DropdownTableMenu styles='rejected' mainMenu={trans.transaction.body} leftMenu />
                                         </DropdownTableItem>
                                     );
                                 })

@@ -9,22 +9,27 @@
   width: 100%;
   justify-content: space-between;
   padding: 0.3rem;
-  border-bottom: 3px solid;
+  border-bottom: 3px solid whitesmoke;
 }
 
 .element-headers:hover {
-  filter: brightness(1.4);
   cursor: pointer;
+}
+
+.element-headers:hover .element-header {
+  font-size: 1.7rem;
 }
 
 .element-header {
   margin-left: 1px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 300;
+  color: whitesmoke
 }
 
 .elem-caret {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  color: whitesmoke
 }
 
 .element-content {
