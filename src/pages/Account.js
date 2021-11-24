@@ -20,7 +20,7 @@ function Account() {
         <>
             <Sidebar />
             <div className='account'>
-                <h1 id="account-holder" className='acc_name'>{t('welcome') + ' ' + acc_hold}</h1>
+                <h1 id="account-holder" className='customer_name'>{t('welcome') + ' ' + acc_hold}</h1>
                 <h3 className='prompt'>{t('what-help-with')}</h3>
                 <Cards2 className='card-acc-menu' />
             </div>

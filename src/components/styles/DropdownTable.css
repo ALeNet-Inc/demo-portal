@@ -205,7 +205,7 @@
   100% { opacity: 1; transform: translateY(0) scaleY(100%); }
 }
 @keyframes slideLeftDropdown {
-  0% { opacity: 0; transform: translateX(100%) }   
+  0% { opacity: 0; transform: translateX(75%) }   
   25% { opacity: 0.35; transform: translateX(75%) }   
   50% { opacity: 0.55; transform: translateX(50%) }   
   75% { opacity: 0.85; transform: translateX(25%) }   
@@ -213,7 +213,7 @@
 }
 
 @keyframes slideRightDropdown {
-  0% { opacity: 0; transform: translateX(-100%) }   
+  0% { opacity: 0; transform: translateX(-75%) }   
   25% { opacity: 0.35; transform: translateX(-75%) }   
   50% { opacity: 0.55; transform: translateX(-50%) }   
   75% { opacity: 0.85; transform: translateX(-25%) }   

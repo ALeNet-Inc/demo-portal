@@ -117,6 +117,7 @@ export function DropdownTableMenu(props) {
                       </ul>
                     );
                   }
+                  return null
                 })
               ) : (
                 null
@@ -152,8 +153,8 @@ export function DropdownTableMenu(props) {
         ) : null
       }
       <div className='btn-container'>
-        <button className='menu-btn' disabled={ (activeMenu === 'left') || (activeMenu == 'main' && !props.leftMenu) } type='button' onClick={leftButtonClick}><AiIcons.AiFillCaretLeft className='caret-btn'/></button>
-        <button className='menu-btn' disabled={ (activeMenu === 'right') || (activeMenu == 'main' && !props.rightMenu) } type='button' onClick={rightButtonClick}><AiIcons.AiFillCaretRight className='caret-btn' /></button>
+        <button className='menu-btn' disabled={ (activeMenu === 'left') || (activeMenu === 'main' && !props.leftMenu) } type='button' onClick={leftButtonClick}><AiIcons.AiFillCaretLeft className='caret-btn'/></button>
+        <button className='menu-btn' disabled={ (activeMenu === 'right') || (activeMenu === 'main' && !props.rightMenu) } type='button' onClick={rightButtonClick}><AiIcons.AiFillCaretRight className='caret-btn' /></button>
       </div>
     </div>
   );

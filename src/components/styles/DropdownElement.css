@@ -1,0 +1,47 @@
+.element-container {
+  margin-top: 4vh;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.element-headers {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0.3rem;
+  border-bottom: 3px solid;
+}
+
+.element-headers:hover {
+  filter: brightness(1.4);
+  cursor: pointer;
+}
+
+.element-header {
+  margin-left: 1px;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.elem-caret {
+  font-size: 2rem;
+}
+
+.element-content {
+  height: 100%;
+  border: 3px solid;
+  border-top: none;
+  border-radius: 8px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  padding: 0.5rem;
+  animation: slideDown 0.4s ease;
+} 
+
+@keyframes slideDown {
+  0% { opacity: 0; transform: translateY(-50%) scaleY(0%); }   
+  25% { opacity: 0.35; transform: translateY(-45%) scaleY(25%);  }   
+  50% { opacity: 0.55; transform: translateY(-25%) scaleY(50%); }   
+  75% { opacity: 0.85; transform: translateY(-10%) scaleY(75%);  }   
+  100% { opacity: 1; transform: translateY(0) scaleY(100%); }
+}
