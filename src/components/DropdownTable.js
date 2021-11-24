@@ -22,18 +22,15 @@ export default function DropdownTable(props) {
 }
 
 export function DropdownTableItem(props) {
-  let color1, color2;
+  let color2;
 
   if (props.styles && props.styles === 'approved') {
-    color1 = 'green'
     color2 = 'rgba(103, 158, 78, 0.74)'
   }
   if (props.styles && props.styles === 'pending') {
-    color1 = 'rgb(235, 203, 23)'
     color2 = 'rgba(206, 165, 33, 0.74)'
   }
   if (props.styles && props.styles === 'rejected') {
-    color1 = 'red'
     color2 = 'rgba(212, 44, 44, 0.74)'
   }
 
