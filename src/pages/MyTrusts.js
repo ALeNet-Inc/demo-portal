@@ -7,7 +7,7 @@ import DropdownTable, { DropdownTableMenu, DropdownTableItem } from '../componen
 import DropdownElement from '../components/DropdownElement';
 import * as BsIcons from 'react-icons/bs';
 import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
+import * as MdIcons from 'react-icons/md';
 
 /* A page with all trust banking information for a user */
 
@@ -23,10 +23,11 @@ function MyTrusts() {
 
     const { t } = useTranslation(); //react-i18-next
 
-    const realEstateIcon = <BsIcons.BsHouse style={{color: 'rgba(143, 188, 255, 1)'}}  />
-    const marketIcon = <BsIcons.BsGraphUp style={{color: 'rgba(143, 188, 255, 1)'}}  />
-    const otherIcon = <BsIcons.BsThreeDots style={{color: 'rgba(143, 188, 255, 1)'}}  />
-    const adminIcon = <FaIcons.FaUser style={{color: 'rgba(143, 188, 255, 1)'}}  />
+    const realEstateIcon = <BsIcons.BsHouse style={{color: 'rgb(179, 197, 197)'}}  />
+    const marketIcon = <BsIcons.BsGraphUp style={{color: 'rgb(179, 197, 197)'}}  />
+    const otherIcon = <BsIcons.BsThreeDots style={{color: 'rgb(179, 197, 197)'}}  />
+    const adminIcon = <FaIcons.FaUser style={{color: 'rgb(179, 197, 197)'}}  />
+    const guaranteesIcon = <MdIcons.MdAttachMoney style={{color: 'rgb(179, 197, 197)'}}  />
 
     const headers = [t('contract-date'), t('contract-name')];
     return (
@@ -45,9 +46,101 @@ function MyTrusts() {
                                             label1={t.trust.headers.date.value}
                                             label2={t.trust.headers.contract_name.value}
                                             index={index}
-                                            styles='blue'
+                                            styles='grey'
                                         >
-                                            <DropdownTableMenu styles='blue' mainMenu={t.trust.body} leftMenu />
+                                            <DropdownTableMenu styles='grey' mainMenu={t.trust.body} leftMenu />
+                                        </DropdownTableItem>
+                                    );
+                                })
+                            ) : (
+                                null
+                            )
+                        }
+                    </DropdownTable>
+                </DropdownElement>
+                <DropdownElement icon={realEstateIcon} header='Real Estate'>
+                    <DropdownTable headers={headers}>
+                        {
+                            myTrusts[2] ? (
+                                myTrusts[2].map((t, index) => {
+                                    return (
+                                        <DropdownTableItem
+                                            key={t.trust.headers.date.value + index}
+                                            label1={t.trust.headers.date.value}
+                                            label2={t.trust.headers.contract_name.value}
+                                            index={index}
+                                            styles='grey'
+                                        >
+                                            <DropdownTableMenu styles='grey' mainMenu={t.trust.body} leftMenu />
+                                        </DropdownTableItem>
+                                    );
+                                })
+                            ) : (
+                                null
+                            )
+                        }
+                    </DropdownTable>
+                </DropdownElement>
+                <DropdownElement icon={marketIcon} header='Investment'>
+                    <DropdownTable headers={headers}>
+                        {
+                            myTrusts[3] ? (
+                                myTrusts[3].map((t, index) => {
+                                    return (
+                                        <DropdownTableItem
+                                            key={t.trust.headers.date.value + index}
+                                            label1={t.trust.headers.date.value}
+                                            label2={t.trust.headers.contract_name.value}
+                                            index={index}
+                                            styles='grey'
+                                        >
+                                            <DropdownTableMenu styles='grey' mainMenu={t.trust.body} leftMenu />
+                                        </DropdownTableItem>
+                                    );
+                                })
+                            ) : (
+                                null
+                            )
+                        }
+                    </DropdownTable>
+                </DropdownElement>
+                <DropdownElement icon={guaranteesIcon} header='Guarantees'>
+                    <DropdownTable headers={headers}>
+                        {
+                            myTrusts[4] ? (
+                                myTrusts[4].map((t, index) => {
+                                    return (
+                                        <DropdownTableItem
+                                            key={t.trust.headers.date.value + index}
+                                            label1={t.trust.headers.date.value}
+                                            label2={t.trust.headers.contract_name.value}
+                                            index={index}
+                                            styles='grey'
+                                        >
+                                            <DropdownTableMenu styles='grey' mainMenu={t.trust.body} leftMenu />
+                                        </DropdownTableItem>
+                                    );
+                                })
+                            ) : (
+                                null
+                            )
+                        }
+                    </DropdownTable>
+                </DropdownElement>
+                <DropdownElement icon={otherIcon} header='Other'>
+                    <DropdownTable headers={headers}>
+                        {
+                            myTrusts[1] ? (
+                                myTrusts[1].map((t, index) => {
+                                    return (
+                                        <DropdownTableItem
+                                            key={t.trust.headers.date.value + index}
+                                            label1={t.trust.headers.date.value}
+                                            label2={t.trust.headers.contract_name.value}
+                                            index={index}
+                                            styles='grey'
+                                        >
+                                            <DropdownTableMenu styles='grey' mainMenu={t.trust.body} leftMenu />
                                         </DropdownTableItem>
                                     );
                                 })

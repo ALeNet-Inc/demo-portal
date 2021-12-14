@@ -36,6 +36,13 @@ export function DropdownTableItem(props) {
   if (props.styles && props.styles === 'blue') {
     color2 = 'rgba(79, 149, 255, 0.70)'
   }
+  if (props.styles && props.styles === 'purple') {
+    color2 = 'rgba(114, 43, 185, 0.7)'
+  }
+  if (props.styles && props.styles === 'grey') {
+    color2 = 'rgb(96, 124, 153)'
+  }
+
 
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
@@ -70,8 +77,16 @@ export function DropdownTableMenu(props) {
     color2 = 'rgba(212, 44, 44, 0.74)'
   }
   if (props.styles && props.styles === 'blue') {
-    color1 = 'rgba(143, 188, 255, 1)'
+    color1 = 'rgb(23, 122, 221)'
     color2 = 'rgba(79, 149, 255, 0.70)'
+  }
+  if (props.styles && props.styles === 'purple') {
+    color1 = 'rgb(153, 88, 217)'
+    color2 = 'rgba(114, 43, 185, 0.7)'
+  }
+  if (props.styles && props.styles === 'grey') {
+    color1 = 'rgb(96, 124, 153)'
+    color2 = 'rgba(169, 186, 202, 0.87)'
   }
 
 

@@ -22,13 +22,13 @@ function MyAccounts() {
 
     const headers = [t('account_no'), t('balance')]
 
-    const realEstateIcon = <BsIcons.BsHouse style={{color: 'rgba(143, 188, 255, 1)'}}  />
-    const checkingIcon = <FaIcons.FaMoneyCheckAlt style={{color: 'rgba(143, 188, 255, 1)'}}  />
-    const autoIcon = <AiIcons.AiFillCar style={{color: 'rgba(143, 188, 255, 1)'}}  />
-    const incomeIcon = <FaIcons.FaMoneyBillWave style={{color: 'rgba(143, 188, 255, 1)'}}  />
-    const loansIcon = <FaIcons.FaMoneyCheck style={{color: 'rgba(143, 188, 255, 1)'}}  />
-    const marketIcon = <BsIcons.BsGraphUp style={{color: 'rgba(143, 188, 255, 1)'}}  />
-    const otherIcon = <BsIcons.BsThreeDots style={{color: 'rgba(143, 188, 255, 1)'}}  />
+    const realEstateIcon = <BsIcons.BsHouse style={{color: 'rgb(179, 197, 197)'}}  />
+    const checkingIcon = <FaIcons.FaMoneyCheckAlt style={{color: 'rgb(179, 197, 197)'}}  />
+    const autoIcon = <AiIcons.AiFillCar style={{color: 'rgb(179, 197, 197)'}}  />
+    const incomeIcon = <FaIcons.FaMoneyBillWave style={{color: 'rgb(179, 197, 197)'}}  />
+    const loansIcon = <FaIcons.FaMoneyCheck style={{color: 'rgb(179, 197, 197)'}}  />
+    const marketIcon = <BsIcons.BsGraphUp style={{color: 'rgb(179, 197, 197)'}}  />
+    const otherIcon = <BsIcons.BsThreeDots style={{color: 'rgb(179, 197, 197)'}}  />
 
     return (
         <div className='myaccounts'>
@@ -46,9 +46,9 @@ function MyAccounts() {
                                             label1={acc.account.headers.account_no.value}
                                             label2={acc.account.headers.balance.value}
                                             index={index}
-                                            styles='blue'
+                                            styles='grey'
                                         >
-                                            <DropdownTableMenu styles='blue' mainMenu={acc.account.body} leftMenu />
+                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
                                         </DropdownTableItem>
                                     );
                                 })
@@ -69,9 +69,9 @@ function MyAccounts() {
                                             label1={acc.account.headers.account_no.value}
                                             label2={acc.account.headers.balance.value}
                                             index={index}
-                                            styles='blue'
+                                            styles='grey'
                                         >
-                                            <DropdownTableMenu styles='blue' mainMenu={acc.account.body} leftMenu />
+                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
                                         </DropdownTableItem>
                                     );
                                 })
@@ -92,9 +92,9 @@ function MyAccounts() {
                                             label1={acc.account.headers.account_no.value}
                                             label2={acc.account.headers.balance.value}
                                             index={index}
-                                            styles='blue'
+                                            styles='grey'
                                         >
-                                            <DropdownTableMenu styles='blue' mainMenu={acc.account.body} leftMenu />
+                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
                                         </DropdownTableItem>
                                     );
                                 })
@@ -115,9 +115,9 @@ function MyAccounts() {
                                             label1={acc.account.headers.account_no.value}
                                             label2={acc.account.headers.balance.value}
                                             index={index}
-                                            styles='blue'
+                                            styles='grey'
                                         >
-                                            <DropdownTableMenu styles='blue' mainMenu={acc.account.body} leftMenu />
+                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
                                         </DropdownTableItem>
                                     );
                                 })
@@ -138,9 +138,9 @@ function MyAccounts() {
                                             label1={acc.account.headers.account_no.value}
                                             label2={acc.account.headers.balance.value}
                                             index={index}
-                                            styles='blue'
+                                            styles='grey'
                                         >
-                                            <DropdownTableMenu styles='blue' mainMenu={acc.account.body} leftMenu />
+                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
                                         </DropdownTableItem>
                                     );
                                 })
@@ -161,9 +161,9 @@ function MyAccounts() {
                                             label1={acc.account.headers.account_no.value}
                                             label2={acc.account.headers.balance.value}
                                             index={index}
-                                            styles='blue'
+                                            styles='grey'
                                         >
-                                            <DropdownTableMenu styles='blue' mainMenu={acc.account.body} leftMenu />
+                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
                                         </DropdownTableItem>
                                     );
                                 })
@@ -184,9 +184,9 @@ function MyAccounts() {
                                             label1={acc.account.headers.account_no.value}
                                             label2={acc.account.headers.balance.value}
                                             index={index}
-                                            styles='blue'
+                                            styles='grey'
                                         >
-                                            <DropdownTableMenu styles='blue' mainMenu={acc.account.body} leftMenu />
+                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
                                         </DropdownTableItem>
                                     );
                                 })
