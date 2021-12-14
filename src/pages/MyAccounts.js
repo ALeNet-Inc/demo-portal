@@ -2,7 +2,6 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router'
 import SideMenu from '../components/SideMenu'
-import DataProcessingUtil from '../functions/DataProcessingUtil'
 import DropdownTable, { DropdownTableMenu, DropdownTableItem } from '../components/DropdownTable';
 import DropdownElement from '../components/DropdownElement';
 import * as BsIcons from 'react-icons/bs'
@@ -14,7 +13,6 @@ function MyAccounts() {
 
     const { t } = useTranslation();
 
-    const dataUtil = new DataProcessingUtil();
     const myAccounts = JSON.parse(sessionStorage.getItem('myAccounts'));
     const history = useHistory();
 

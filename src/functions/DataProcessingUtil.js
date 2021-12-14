@@ -36,14 +36,14 @@ export default class DataProcessingUtil {
             }
             return {
                 "trust": {
-                    headers: {
-                        contract_no: { label: 'Contract Number', value: contractNo },
+                    headers: {  
+                        type: { label: 'Trust Type', value: ficoType },
                         date: { label: 'Start Date', value: dateString },
                         contract_name: { label: 'Contract Name', value: contractName }
                     },
                     body: [
+                        { label: 'Contract Number', value: contractNo },
                         { label: 'Contract Name', value: contractName },
-                        { label: 'Trust Type', value: ficoType }
                     ],
                 }
             }
@@ -51,13 +51,37 @@ export default class DataProcessingUtil {
 
         let filteredInfo = trustInfo.filter((trust, index, self) => (
             index === self.findIndex((t) => (
-                trust.trust.body[1].value !== "" &&
-                t.trust.headers.contract_no.value === trust.trust.headers.contract_no.value &&
+                trust.trust.headers.type.value !== "" &&
+                t.trust.headers.contract_name.value === trust.trust.headers.contract_name.value &&
                 t.trust.body[0].value === trust.trust.body[0].value
             ))
         ))
 
-        return filteredInfo;
+        console.log(filteredInfo);
+
+        let administration = filteredInfo.filter((t) => {
+            return t.trust.headers.type.value === 'Administration'
+        })
+
+        let other = filteredInfo.filter((t) => {
+            return t.trust.headers.type.value === 'Other'
+        })
+
+        let realEstate = filteredInfo.filter((t) => {
+            return t.trust.headers.type.value === 'Real State Developments'
+        })
+
+        let investment = filteredInfo.filter((t) => {
+            return t.trust.headers.type.value === 'Investments'
+        })
+
+        let guarantees = filteredInfo.filter((t) => {
+            return t.trust.headers.type.value === 'Guarantees'
+        })
+
+        //other, administration
+
+        return [administration, other, realEstate, investment, guarantees];
     }
 
     /**

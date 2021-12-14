@@ -3,7 +3,7 @@ import * as AiIcons from 'react-icons/ai'
 import './styles/DropdownElement.css'
 
 function DropdownElement(props) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
   return (
     <div className='element-container'>
