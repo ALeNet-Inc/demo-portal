@@ -33,6 +33,9 @@ export function DropdownTableItem(props) {
   if (props.styles && props.styles === 'rejected') {
     color2 = 'rgba(212, 44, 44, 0.74)'
   }
+  if (props.styles && props.styles === 'blue') {
+    color2 = 'rgba(79, 149, 255, 0.70)'
+  }
 
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
@@ -65,6 +68,10 @@ export function DropdownTableMenu(props) {
   if (props.styles && props.styles === 'rejected') {
     color1 = 'red'
     color2 = 'rgba(212, 44, 44, 0.74)'
+  }
+  if (props.styles && props.styles === 'blue') {
+    color1 = 'rgba(143, 188, 255, 1)'
+    color2 = 'rgba(79, 149, 255, 0.70)'
   }
 
 

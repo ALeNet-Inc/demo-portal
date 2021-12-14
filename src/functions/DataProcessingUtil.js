@@ -31,14 +31,14 @@ export default class DataProcessingUtil {
             let contractNo = this.removeUglyChars(elem[2].contents);
             let contractName = this.removeUglyChars(this.toTitleCase(elem[4].contents));
             let ficoType = this.removeUglyChars(this.toTitleCase(elem[7].contents));
-            if(ficoType === "") {
-                ficoType ="Other";
+            if (ficoType === "") {
+                ficoType = "Other";
             }
             return {
                 "trust": {
                     headers: {
-                        contract_no : { label: 'Contract Number', value: contractNo },
-                        date: { label: 'Start Date', value: dateString }, 
+                        contract_no: { label: 'Contract Number', value: contractNo },
+                        date: { label: 'Start Date', value: dateString },
                         contract_name: { label: 'Contract Name', value: contractName }
                     },
                     body: [
@@ -51,8 +51,8 @@ export default class DataProcessingUtil {
 
         let filteredInfo = trustInfo.filter((trust, index, self) => (
             index === self.findIndex((t) => (
-                trust.trust.body[1].value !== "" && 
-                t.trust.headers.contract_no.value === trust.trust.headers.contract_no.value && 
+                trust.trust.body[1].value !== "" &&
+                t.trust.headers.contract_no.value === trust.trust.headers.contract_no.value &&
                 t.trust.body[0].value === trust.trust.body[0].value
             ))
         ))
@@ -101,7 +101,7 @@ export default class DataProcessingUtil {
         })
         let filteredInfo = transactionInfo.filter((transaction, index, self) => (
             index === self.findIndex((t) => (
-                t.transaction.headers.contract.value === transaction.transaction.headers.contract.value && 
+                t.transaction.headers.contract.value === transaction.transaction.headers.contract.value &&
                 t.transaction.body[0].value === transaction.transaction.body[0].value
             ))
         ))
@@ -115,10 +115,6 @@ export default class DataProcessingUtil {
         let rejected = filteredInfo.filter((transaction) => {
             return transaction.transaction.headers.status.value === 'Rejected';
         })
-
-        console.log(approved)
-        console.log(pending)
-        console.log(rejected)
 
         return [approved, pending, rejected];
     }
@@ -148,15 +144,14 @@ export default class DataProcessingUtil {
                     headers: {
                         account_no: { label: 'Account Number', value: accountNo },
                         balance: { label: 'Balance', value: balance },
-                        linked_trust: { label: 'Linked Trust', value: contract }
+                        linked_trust: { label: 'Linked Trust', value: contract },
+                        acc_type: { label: 'Account Type', value: accountType }
                     },
                     body: [
-                        { label: 'Account Type', value: accountType },
                         { label: 'Company', value: company },
                         { label: 'Interest Earned', value: intEarned },
                         { label: 'Interest Paid', value: intPaid },
                     ],
-                    errorLabel: 'No Linked Account Found.'
                 }
             }
         })
@@ -166,7 +161,36 @@ export default class DataProcessingUtil {
                 t.account.headers.account_no.value === acc.account.headers.account_no.value
             ))
         ))
-        return filteredInfo;
+
+        let realEstate = filteredInfo.filter((account) => {
+            return account.account.headers.acc_type.value === 'Real Estate'
+        });
+
+        let checking = filteredInfo.filter((account) => {
+            return account.account.headers.acc_type.value === 'Checking Account'
+        });
+
+        let auto = filteredInfo.filter((account) => {
+            return account.account.headers.acc_type.value === 'Automobile'
+        });
+
+        let income = filteredInfo.filter((account) => {
+            return account.account.headers.acc_type.value === 'Fix Income'
+        });
+
+        let loans = filteredInfo.filter((account) => {
+            return account.account.headers.acc_type.value === 'Loan'
+        });
+
+        let other = filteredInfo.filter((account) => {
+            return account.account.headers.acc_type.value === 'Other'
+        });
+
+        let market = filteredInfo.filter((account) => {
+            return account.account.headers.acc_type.value === 'Equity Market, Stocks'
+        });
+
+        return [realEstate, checking, auto, income, loans, other, market];
     }
 
     findContract(contractName) {

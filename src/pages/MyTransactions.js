@@ -14,6 +14,7 @@ function MyTransactions() {
 
     //Populate HTML table with Trust information
     const mytransactions = JSON.parse(sessionStorage.getItem('myTransactions'))
+    console.log(mytransactions);
     const history = useHistory();
 
     const { t } = useTranslation(); //react-i18-next
