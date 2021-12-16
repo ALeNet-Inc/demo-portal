@@ -105,11 +105,11 @@ export default class DataProcessingUtil {
         14=CONTRACT_NAME 15=DISBURSEMENT_TYPE 16=VOID 17=CHECK_NO 18=CHECK_PRINT_DATI 19=CHECK_PRINT_BY 
         */
         let transactionInfo = transactionArray.map(elem => {
-            let date = new Date(elem[3].contents); //Pretty format the date for usability.
-            let year = new Intl.DateTimeFormat(Cookies.get('i18next'), { year: 'numeric' }).format(date);
-            let month = new Intl.DateTimeFormat(Cookies.get('i18next'), { month: 'short' }).format(date);
-            let day = new Intl.DateTimeFormat(Cookies.get('i18next'), { year: '2-digit' }).format(date);
-            let dateString = `${year}-${month}-${day}`;
+            // let date = new Date(elem[3].contents); //Pretty format the date for usability.
+            // let year = new Intl.DateTimeFormat(Cookies.get('i18next'), { year: 'numeric' }).format(date);
+            // let month = new Intl.DateTimeFormat(Cookies.get('i18next'), { month: 'short' }).format(date);
+            // let day = new Intl.DateTimeFormat(Cookies.get('i18next'), { year: '2-digit' }).format(date);
+            // let dateString = `${year}-${month}-${day}`;
             let status = this.removeUglyChars(this.toTitleCase(elem[4].contents));
             let amt = dollarUs.format(parseFloat(elem[11].contents));
             let contract = this.removeUglyChars(this.toTitleCase(elem[14].contents))
