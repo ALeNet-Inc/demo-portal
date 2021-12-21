@@ -135,12 +135,6 @@ export default class ClientixAPI {
                 return option.key ? subject === option.value : 0
             })
 
-            console.log("Subject: " + subject)
-
-            this.requestOptions.method = this.method.get;
-
-             console.log("KEY: " + key[0].key)
-
             let urlPrep = "https://eportal.clientix.com/clx56dev/apirest.php?classname=ServRequestLoad&CLX_SESSION_ID=" + this.sessionToken;
             urlPrep += "&FIRSTNAME=" + sessionStorage.getItem('FIRSTNAME');
             urlPrep += "&LASTNAME=" + sessionStorage.getItem('LASTNAME');
@@ -153,9 +147,6 @@ export default class ClientixAPI {
             urlPrep += "&DEPARTMENT_CODE=000001";
             urlPrep += "&REQ_SOURCE=0010";
             urlPrep += "&ASSIGNEDTO_USER=salegrett";
-
-            console.log("URL" + urlPrep)
-
 
             await fetch(urlPrep, this.requestOptions)
                 .then(response => response.json())

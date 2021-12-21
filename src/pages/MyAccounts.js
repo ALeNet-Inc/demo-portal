@@ -20,8 +20,8 @@ function MyAccounts() {
         history.push('/accounts-error');
     }
 
-    const headers = [t('account_no'), t('balance')]
-
+    const tableHeaders = [t('account_no'), t('balance')];
+    const sectionHeaders = [t('real-estate'), t('checking'), t('auto'), t('income'), t('loans'), t('inv'), t('other')];
     const realEstateIcon = <BsIcons.BsHouse style={{color: 'rgb(179, 197, 197)'}}  />
     const checkingIcon = <FaIcons.FaMoneyCheckAlt style={{color: 'rgb(179, 197, 197)'}}  />
     const autoIcon = <AiIcons.AiFillCar style={{color: 'rgb(179, 197, 197)'}}  />
@@ -29,173 +29,42 @@ function MyAccounts() {
     const loansIcon = <FaIcons.FaMoneyCheck style={{color: 'rgb(179, 197, 197)'}}  />
     const marketIcon = <BsIcons.BsGraphUp style={{color: 'rgb(179, 197, 197)'}}  />
     const otherIcon = <BsIcons.BsThreeDots style={{color: 'rgb(179, 197, 197)'}}  />
+    const icons = [realEstateIcon, checkingIcon, autoIcon, incomeIcon, loansIcon, marketIcon, otherIcon];
 
     return (
         <div className='myaccounts'>
             <SideMenu />
             <div className='my-accounts-container'>
                 <h1 className='my-accounts-title'>{t('my-accounts')}</h1>
-                <DropdownElement icon={realEstateIcon} header='Real Estate'>
-                    <DropdownTable headers={headers}>
-                        {
-                            myAccounts[0] ? (
-                                myAccounts[0].map((acc, index) => {
-                                    return (
-                                        <DropdownTableItem
-                                            key={acc.account.headers.account_no.value + index}
-                                            label1={acc.account.headers.account_no.value}
-                                            label2={acc.account.headers.balance.value}
-                                            index={index}
-                                            styles='grey'
-                                        >
-                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
-                                        </DropdownTableItem>
-                                    );
-                                })
-                            ) : (
-                                null
+                {
+                    myAccounts.map((section, index) => {
+                        return (
+                            section ? (
+                                <DropdownElement icon={icons[index]} header={sectionHeaders[index]} key={index}>
+                                    <DropdownTable headers={tableHeaders}>
+                                        {
+                                            section.map((acc) => {
+                                                return (
+                                                    <DropdownTableItem
+                                                        key={acc.id}
+                                                        label1={acc.headers.account_no}
+                                                        label2={acc.headers.balance}
+                                                        index={acc.id}
+                                                        styles='grey'
+                                                    >
+                                                        <DropdownTableMenu styles='grey' mainMenu={acc.body} leftMenu />
+                                                    </DropdownTableItem>
+                                                );
+                                            })
+                                        }
+                                    </DropdownTable>
+                                </DropdownElement>
                             )
-                        }
-                    </DropdownTable>
-                </DropdownElement>
-                <DropdownElement icon={checkingIcon} header='Checking'>
-                    <DropdownTable headers={headers}>
-                        {
-                            myAccounts[1] ? (
-                                myAccounts[1].map((acc, index) => {
-                                    return (
-                                        <DropdownTableItem
-                                            key={acc.account.headers.account_no.value + index}
-                                            label1={acc.account.headers.account_no.value}
-                                            label2={acc.account.headers.balance.value}
-                                            index={index}
-                                            styles='grey'
-                                        >
-                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
-                                        </DropdownTableItem>
-                                    );
-                                })
-                            ) : (
-                                null
-                            )
-                        }
-                    </DropdownTable>
-                </DropdownElement>
-                <DropdownElement icon={autoIcon} header='Auto'>
-                    <DropdownTable headers={headers}>
-                        {
-                            myAccounts[2] ? (
-                                myAccounts[2].map((acc, index) => {
-                                    return (
-                                        <DropdownTableItem
-                                            key={acc.account.headers.account_no.value + index}
-                                            label1={acc.account.headers.account_no.value}
-                                            label2={acc.account.headers.balance.value}
-                                            index={index}
-                                            styles='grey'
-                                        >
-                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
-                                        </DropdownTableItem>
-                                    );
-                                })
-                            ) : (
-                                null
-                            )
-                        }
-                    </DropdownTable>
-                </DropdownElement>
-                <DropdownElement icon={incomeIcon} header='Income'>
-                    <DropdownTable headers={headers}>
-                        {
-                            myAccounts[3] ? (
-                                myAccounts[3].map((acc, index) => {
-                                    return (
-                                        <DropdownTableItem
-                                            key={acc.account.headers.account_no.value + index}
-                                            label1={acc.account.headers.account_no.value}
-                                            label2={acc.account.headers.balance.value}
-                                            index={index}
-                                            styles='grey'
-                                        >
-                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
-                                        </DropdownTableItem>
-                                    );
-                                })
-                            ) : (
-                                null
-                            )
-                        }
-                    </DropdownTable>
-                </DropdownElement>
-                <DropdownElement icon={loansIcon} header='Loan'>
-                    <DropdownTable headers={headers}>
-                        {
-                            myAccounts[4] ? (
-                                myAccounts[4].map((acc, index) => {
-                                    return (
-                                        <DropdownTableItem
-                                            key={acc.account.headers.account_no.value + index}
-                                            label1={acc.account.headers.account_no.value}
-                                            label2={acc.account.headers.balance.value}
-                                            index={index}
-                                            styles='grey'
-                                        >
-                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
-                                        </DropdownTableItem>
-                                    );
-                                })
-                            ) : (
-                                null
-                            )
-                        }
-                    </DropdownTable>
-                </DropdownElement>
-                <DropdownElement icon={otherIcon} header='Other'>
-                    <DropdownTable headers={headers}>
-                        {
-                            !myAccounts[5].length ? (
-                                myAccounts[5].map((acc, index) => {
-                                    return (
-                                        <DropdownTableItem
-                                            key={acc.account.headers.account_no.value + index}
-                                            label1={acc.account.headers.account_no.value}
-                                            label2={acc.account.headers.balance.value}
-                                            index={index}
-                                            styles='grey'
-                                        >
-                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
-                                        </DropdownTableItem>
-                                    );
-                                })
-                            ) : (
-                                null
-                            )
-                        }
-                    </DropdownTable>
-                </DropdownElement>
-                <DropdownElement icon={marketIcon} header='Market'>
-                    <DropdownTable headers={headers}>
-                        {
-                            myAccounts[6] ? (
-                                myAccounts[6].map((acc, index) => {
-                                    return (
-                                        <DropdownTableItem
-                                            key={acc.account.headers.account_no.value + index}
-                                            label1={acc.account.headers.account_no.value}
-                                            label2={acc.account.headers.balance.value}
-                                            index={index}
-                                            styles='grey'
-                                        >
-                                            <DropdownTableMenu styles='grey' mainMenu={acc.account.body} leftMenu />
-                                        </DropdownTableItem>
-                                    );
-                                })
-                            ) : (
-                                null
-                            )
-                        }
-                    </DropdownTable>
-                </DropdownElement>
+                                :
+                                (null)
+                        );
+                    })
+                }
             </div>
         </div >
     )

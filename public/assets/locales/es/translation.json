@@ -125,5 +125,20 @@
     "error_prompt_2": "Tu pedido no ha sido completado.",
     "try_again": "Por favor, intentelo de nuevo.",
     "currency": "Moneda",
-    "name": "Nombre"
+    "name": "Nombre",
+    "admin": "Administración",
+    "real-estate": "Bienes Raíces",
+    "inv": "Inversión",
+    "guar": "Garantías",
+    "other": "Otro",
+    "ret": "Jubilación",
+    "checking": "Cuenta Corriente",
+    "auto": "Automóbil",
+    "income": "Ingresos",
+    "approved": "Aprobadas",
+    "pending": "Pendientes",
+    "rejected": "Rechazadas",
+    "date": "Fecha",
+    "company-code": "Codigo de la Compañía",
+    "rep-problem": "Report a Problem"
 }

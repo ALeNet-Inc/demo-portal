@@ -127,5 +127,20 @@
     "logout": "Log Out",
     "language_selection": "Language Selection... ",
     "currency": "Currency",
-    "name": "Name"
+    "name": "Name",
+    "admin": "Administration",
+    "real-estate": "Real Estate",
+    "inv": "Investment",
+    "guar": "Guarantees",
+    "other": "Other",
+    "ret": "Retirement",
+    "checking": "Checking Account",
+    "auto": "Automobile",
+    "income": "Income",
+    "approved": "Approved",
+    "pending": "Pending",
+    "rejected": "Rejected",
+    "date": "Date",
+    "company-code": "Company Code",
+    "rep-problem": "Report a Problem"
 }

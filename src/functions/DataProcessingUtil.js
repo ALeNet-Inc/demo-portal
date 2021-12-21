@@ -84,7 +84,7 @@ export default class DataProcessingUtil {
             return (t.headers.type === 'Retirement plan') ||
                 (t.headers.type === 'Previsión social')
         });
-        return [administration, other, realEstate, investment, guarantees, retirement];
+        return [administration, realEstate, investment, guarantees, retirement, other];
     }
 
     /**
@@ -112,7 +112,7 @@ export default class DataProcessingUtil {
             let year = new Intl.DateTimeFormat(Cookies.get('i18next'), { year: 'numeric' }).format(date);
             let month = new Intl.DateTimeFormat(Cookies.get('i18next'), { month: 'short' }).format(date);
             let day = new Intl.DateTimeFormat(Cookies.get('i18next'), { year: '2-digit' }).format(date);
-            let currency = (elem[7].contents.replace(/.*/, '')).toUpperCase();
+            let currency = this.toTitleCase(elem[7].contents);
             let dateString = `${year}-${month}-${day}`;
             let status = this.removeUglyChars(this.toTitleCase(elem[4].contents));
             let amt = dollarUs.format(parseFloat(elem[11].contents));
@@ -122,19 +122,18 @@ export default class DataProcessingUtil {
                 id: index,
                 headers: {
                     amount: amt,
-                    name: name,
                     date: dateString,
                     status: status,
                 },
                 body: [
-                    { label: 'contract-name', value: contract },
+                    { label: 'name', value: name },
                     { label: 'currency', value: currency },
+                    { label: 'contract-name', value: contract },
                 ]
             }
         })
         let filteredInfo = transactionInfo.filter((transaction, index, self) => (
             index === self.findIndex((t) => (
-                t.headers.name === transaction.headers.name &&
                 t.body[0].value === transaction.body[0].value
             ))
         ))
@@ -154,7 +153,6 @@ export default class DataProcessingUtil {
     }
 
     populateAccounts(myAccounts) {
-        //obtain transaction infromation from user's local storage and process to json. propArray contains all trustProperties.
         let accountObjArray = JSON.parse(myAccounts);
         if (!accountObjArray[0].objects) {
             return null;
@@ -182,8 +180,8 @@ export default class DataProcessingUtil {
                 },
                 body: [
                     { label: 'company', value: company },
-                    { label: 'int-earned', value: intEarned },
-                    { label: 'int-paid', value: intPaid },
+                    { label: 'int_earned', value: intEarned },
+                    { label: 'int_paid', value: intPaid },
                 ],
             }
         })
@@ -196,31 +194,31 @@ export default class DataProcessingUtil {
 
         let realEstate = filteredInfo.filter((account) => {
             return (account.headers.acc_type === 'Real Estate') ||
-                (account.headers.acc_type === 'Desarrollos inmobiliarios');
+                (account.headers.acc_type === 'Inmobiliario');
         });
 
         let checking = filteredInfo.filter((account) => {
             return (account.headers.acc_type === 'Checking Account') ||
-                (account.headers.acc_type === 'Cuenta corriente');
+                (account.headers.acc_type === 'Cuenta Corriente');
         });
 
         let auto = filteredInfo.filter((account) => {
             return (account.headers.acc_type === 'Automobile') ||
-                (account.headers.acc_type === 'Automóbil')
+                (account.headers.acc_type === 'Automóvil')
         });
 
         let income = filteredInfo.filter((account) => {
             return (account.headers.acc_type === 'Fix Income') ||
-                (account.headers.acc_type === 'Ingresos')
+                (account.headers.acc_type === 'Renta Fija') || (account.headers.acc_type === 'Renta Variable')
         });
 
         let loans = filteredInfo.filter((account) => {
             return (account.headers.acc_type === 'Loan') ||
-                (account.headers.acc_type === 'Prestamo')
+                (account.headers.acc_type === 'Préstamo')
         });
 
         let other = filteredInfo.filter((account) => {
-            return (account.account.headers.acc_type === 'Other') ||
+            return (account.headers.acc_type === 'Other') ||
                 (account.headers.acc_type === 'Otro') || (account.headers.acc_type === '')
         });
 

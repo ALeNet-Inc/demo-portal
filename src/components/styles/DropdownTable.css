@@ -19,13 +19,11 @@
 
 .menu-btn {
   border: none;
-  padding: 0.7rem;
-  height: 7vh;
-  width: 7vh;
-  border-radius: 50%;
-  font-size: 1.3rem;
-  background-color: rgb(59, 59, 59);
-  text-align: center;
+  padding: 0.3rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
   color: whitesmoke;
 }
 
@@ -74,7 +72,6 @@
   text-decoration: none;
   margin: 5px;
 }
-
 
 .row-label-group {
   display: inline-flex;

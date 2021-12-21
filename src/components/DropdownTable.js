@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as AiIcons from 'react-icons/ai';
+import { useTranslation } from 'react-i18next';
 import './styles/DropdownTable.css';
 
 export default function DropdownTable(props) {
@@ -43,13 +44,12 @@ export function DropdownTableItem(props) {
     color2 = 'rgb(96, 124, 153)'
   }
 
-
   const [open, setOpen] = useState(false);
   const toggle = () => setOpen(!open);
 
   return (
-    <li className='dropdown-table-item'>
-      <button id={props.index} className='dropdown-table-row' onClick={toggle} style={{ backgroundColor: color2 }}>
+    <li className='dropdown-table-item' id={props.index}>
+      <button className='dropdown-table-row' onClick={toggle} style={{ backgroundColor: color2 }}>
         {open ? <AiIcons.AiFillCaretDown className='caret' /> : <AiIcons.AiFillCaretRight className='caret' />}
         <div className='row-label-group'>
           <label className='dropdown-table-item-label'>{props.label1}</label>
@@ -63,7 +63,7 @@ export function DropdownTableItem(props) {
 
 export function DropdownTableMenu(props) {
   let color1, color2;
-
+  const { t } = useTranslation();
   if (props.styles && props.styles === 'approved') {
     color1 = 'rgb(10, 100, 5)'
     color2 = 'rgba(103, 158, 78, 0.74)'
@@ -88,10 +88,7 @@ export function DropdownTableMenu(props) {
     color1 = 'rgb(96, 124, 153)'
     color2 = 'rgba(169, 186, 202, 0.87)'
   }
-
-
   const [activeMenu, setActiveMenu] = useState('main');
-
   const rightButtonClick = () => {
     if (activeMenu === 'main' && props.rightMenu) setActiveMenu('right');
     if (activeMenu === 'left' && props.mainMenu) setActiveMenu('main');
@@ -115,7 +112,7 @@ export function DropdownTableMenu(props) {
                     return (
                       <ul className='dropdown-table-menu-items' key={menuItem.value + ' ' + index}>
                         <li className='dropdown-table-menu-item'>
-                          <strong>{menuItem.label + ': '}</strong>{menuItem.value}
+                          <strong>{t(menuItem.label) + ': '}</strong>{menuItem.value}
                         </li>
                       </ul>
                     );
@@ -136,7 +133,7 @@ export function DropdownTableMenu(props) {
                       return (
                         <ul className='dropdown-table-menu-items' key={menuItem.value + ' ' + index}>
                           <li className='dropdown-table-menu-item'>
-                            <strong>{menuItem.label + ': '}</strong>{menuItem.value}
+                            <strong>{t(menuItem.label) + ': '}</strong>{menuItem.value}
                           </li>
                         </ul>
                       );
@@ -160,7 +157,7 @@ export function DropdownTableMenu(props) {
                     return (
                       <ul className='dropdown-table-menu-items' key={menuItem.value + ' ' + index}>
                         <li className='dropdown-table-right-menu-item'>
-                          <strong>{menuItem.label + ': '}</strong>{menuItem.value}
+                          <strong>{t(menuItem.label) + ': '}</strong>{menuItem.value}
                         </li>
                       </ul>
                     );
@@ -180,7 +177,7 @@ export function DropdownTableMenu(props) {
                       return (
                         <ul className='dropdown-table-menu-items' key={menuItem.value + ' ' + index}>
                           <li className='dropdown-table-right-menu-item'>
-                            <strong>{menuItem.label + ': '}</strong>{menuItem.value}
+                            <strong>{t(menuItem.label) + ': '}</strong>{menuItem.value}
                           </li>
                         </ul>
                       );
@@ -196,7 +193,7 @@ export function DropdownTableMenu(props) {
           </div>
         ) : activeMenu === 'left' && props.leftMenu ? (
           <div className='service-request-box'>
-            <h2>Report a Problem: </h2>
+            
           </div>
         ) : null
       }
@@ -206,18 +203,18 @@ export function DropdownTableMenu(props) {
           disabled={(activeMenu === 'left') || (activeMenu === 'main' && !props.leftMenu)}
           type='button'
           onClick={leftButtonClick}
-          style={{ backgroundColor: color1 }}
+          style={{backgroundColor: color1}}
         >
-          <AiIcons.AiFillCaretLeft className='caret-btn' />
+          <AiIcons.AiFillExclamationCircle className='caret-btn' /> {t('rep-problem')}
         </button>
         <button
           className='menu-btn'
           disabled={(activeMenu === 'right') || (activeMenu === 'main' && !props.rightMenu)}
           type='button'
           onClick={rightButtonClick}
-          style={{ backgroundColor: color1 }}
+          style={{backgroundColor: color1}}
         >
-          <AiIcons.AiFillCaretRight className='caret-btn' />
+         {t('back')}  <AiIcons.AiFillCaretRight className='caret-btn' /> 
         </button>
       </div>
     </div>
