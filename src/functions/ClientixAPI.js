@@ -129,8 +129,6 @@ export default class ClientixAPI {
         this.sessionToken = Cookies.get("session_token");
         setTimeout(async () => {
 
-            console.log("Sending...")
-
             let key = serviceOptions.filter(option => {
                 return option.key ? subject === option.value : 0
             })
