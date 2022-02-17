@@ -125,7 +125,7 @@ export default class ClientixAPI {
      * No Parameters.
      * @returns Sets service request options to the user's local storage to be retrieved and processed.
      */
-    async submitServiceRequest(subject, info, serviceOptions) {
+    async submitServiceRequest(subject, info, serviceOptions, fileName, file) {
         this.sessionToken = Cookies.get("session_token");
         setTimeout(async () => {
 
@@ -145,6 +145,7 @@ export default class ClientixAPI {
             urlPrep += "&DEPARTMENT_CODE=000001";
             urlPrep += "&REQ_SOURCE=0010";
             urlPrep += "&ASSIGNEDTO_USER=salegrett";
+            urlPrep += "&ATTACHMENT01=" + fileName + ":$" + file;
 
             await fetch(urlPrep, this.requestOptions)
                 .then(response => response.json())

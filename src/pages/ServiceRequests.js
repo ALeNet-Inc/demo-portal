@@ -1,17 +1,20 @@
 import { React, useState } from 'react'
-import './styles/ServiceRequests.css'
 import { useTranslation } from 'react-i18next';
+import * as FaIcons from 'react-icons/fa';
 import ClientixAPI from '../functions/ClientixAPI';
 import Dropdown from '../components/Dropdown'
 import TextArea from '../components/TextArea'
 import Sidebar from '../components/SideMenu'
 import Popup from '../components/Popup'
+import './styles/ServiceRequests.css'
 
 function ServiceRequests() {
 
     const { t } = useTranslation(); //react-i18-next
 
     const [serviceOption, setServiceOption] = useState(t('serv101'))
+    const [file, setFile] = useState(null);
+    const [base64, setBase64] = useState(null);
     const [info, setInfo] = useState('')
 
     const textHandler = information => setInfo(information.value)
@@ -23,7 +26,7 @@ function ServiceRequests() {
     const [buttonPopup, setButtonPopup] = useState(false);
 
     const handleSubmit = () => {
-        api.submitServiceRequest(serviceOption, info, serviceRequestOptions)
+        api.submitServiceRequest(serviceOption, info, serviceRequestOptions, file, base64)
         setButtonPopup(true)
     }
 
@@ -41,24 +44,28 @@ function ServiceRequests() {
     ]
 
     const convertBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-          const fileReader = new FileReader();
-          fileReader.readAsDataURL(file);
-    
-          fileReader.onload = () => {
-            resolve(fileReader.result);
-          };
-    
-          fileReader.onerror = (error) => {
-            reject(error);
-          };
-        });
-      };
+        if (file) {
+            return new Promise((resolve, reject) => {
+                const fileReader = new FileReader();
+                fileReader.readAsDataURL(file);
 
-      const uploadImage = async (e) => {
-        const file = e.target.files[0];
-        const base64 = await convertBase64(file);
-        console.log(base64);
+                fileReader.onload = () => {
+                    resolve(fileReader.result);
+                };
+
+                fileReader.onerror = (error) => {
+                    reject(error);
+                };
+            });
+        }
+    };
+
+    const uploadImage = async (e) => {
+        const fileimg = e.target.files[0];
+        const base64file = await convertBase64(fileimg);
+        setBase64(base64file);
+        console.log(base64file);
+        setFile(fileimg.name);
     };
 
     return (
@@ -71,9 +78,12 @@ function ServiceRequests() {
                     <Dropdown id='service-dropdown' placeholder={t('what-help-with')} options={serviceRequestOptions} onChange={dropdownHandler} />
                     <br />
                     <label className='upload-prompt'>
-                        <input type='file' className='fileUpload' onChange={ (e) => uploadImage(e) }/>
+                        <input type='file' className='fileUpload' onChange={(e) => uploadImage(e)} />
                         Upload File
                     </label>
+                    {
+                        file ? <span>{file + ' '}<FaIcons.FaCheckCircle /></span> : null
+                    }
                 </div>
                 <h2 className='text-prompt'>{t('problem-description')}</h2>
                 <TextArea onChange={textHandler} />
@@ -84,18 +94,18 @@ function ServiceRequests() {
                 </h3>
                 <button className='service-btn-submit' onClick={handleSubmit}> {t('submit-req')} </button>
             </div>
-            <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
-                <h3>{t('request_success') + serviceOption}</h3>
-                <br />
-                <p>
-                    {"Descripcion: " + info}
+                <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                    <h3>{t('request_success') + serviceOption}</h3>
                     <br />
-                    <br />
-                    {t('request_success_2')}
-                </p>
-            </Popup>
-        </div>
-    )
+                    <p>
+                        {"Descripcion: " + info}
+                        <br />
+                        <br />
+                        {t('request_success_2')}
+                    </p>
+                </Popup>
+            </div>
+            )
 }
 
-export default ServiceRequests
+            export default ServiceRequests
