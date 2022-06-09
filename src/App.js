@@ -1,9 +1,8 @@
-  
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import './App.css';
 import Home from './pages/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Services from './pages/Services';
 import Products from './pages/Products';
 import SignUp from './pages/SignUp';
@@ -19,7 +18,6 @@ import MyTransactionsError from './pages/MyTransactionsError';
 import MyTrustsError from './pages/MyTrustsError';
 
 /* Main App component where everything is routed */
-
 function App() {
 
   return (
