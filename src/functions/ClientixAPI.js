@@ -138,6 +138,7 @@ export default class ClientixAPI {
             urlPrep += "&LASTNAME=" + sessionStorage.getItem('LASTNAME');
             urlPrep += "&EMAIL=" + sessionStorage.getItem('EMAIL');
             urlPrep += "&PHONE=" + sessionStorage.getItem('PHONE');
+            urlPrep += "&FAX=" + sessionStorage.getItem('PHONE');
             urlPrep += "&REQ_TYPE=" + key[0].key;
             urlPrep += "&SUBJECT=" + subject;
             urlPrep += "&ADD_INFO=" + info;
