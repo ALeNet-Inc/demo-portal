@@ -137,7 +137,6 @@ The functionality will be based on the Clientix © CRM [AleNet, Inc](http://www.
   * This app is currently being deployed using [Netlify](https://www.netlify.com/)
   * To log into the netlify deployment center, use the credential:
     - Username: sebasalegrett12@gmail.com
-    - Password: Alegrett1212.
   * In there you should see a dashbord with the currently deployed websites:
   ![Image](./public/images/NetlifyDashboard.png)
   * Click on `clientix-portal-demo`
