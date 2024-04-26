@@ -67,7 +67,7 @@ function Footer() {
                 <div className='social-media-wrap'>
                     <div className='footer-logo'>
                         <Link className='social-logo' to='www.alenet.com'>
-                            <img src='/images/clientixlogo.webp' alt='Clientix Logo' className='social-logo-img'></img>
+                            <img src='/images/clientixlogo.jpg' alt='Clientix Logo' className='social-logo-img'></img>
                         </Link>
                     </div>
                     <small className='website-rights'> Powered by Clientix ©2003-2021 ALeNet, Inc.</small>
